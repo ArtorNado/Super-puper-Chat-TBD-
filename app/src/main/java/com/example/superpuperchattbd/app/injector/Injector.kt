@@ -1,7 +1,7 @@
 package com.example.superpuperchattbd.app.injector
 
-import com.example.superpuperchattbd.MainActivity
-import com.example.superpuperchattbd.MainActivityFeatureSubcomponent
+import com.example.superpuperchattbd.main.MainActivity
+import com.example.superpuperchattbd.main.MainActivityFeatureSubcomponent
 import com.example.superpuperchattbd.app.App
 import com.example.superpuperchattbd.app.di.AppComponent
 import com.example.superpuperchattbd.app.di.DaggerAppComponent

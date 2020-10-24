@@ -1,4 +1,4 @@
-package com.example.superpuperchattbd
+package com.example.superpuperchattbd.main
 
 import android.app.Activity
 import com.example.superpuperchattbd.common.MainActivtyScope
@@ -17,10 +17,6 @@ interface MainActivityFeatureSubcomponent{
         @BindsInstance
         fun withActivity(activity: Activity): Builder
 
-        @BindsInstance
-        fun create(teamId: Int): Builder
-
         fun build(): MainActivityFeatureSubcomponent
-
     }
 }

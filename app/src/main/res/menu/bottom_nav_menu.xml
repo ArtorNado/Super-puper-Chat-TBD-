@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/navigation_clubs"
+        android:title="@string/title_X" />
+
+    <item
+        android:id="@+id/navigation_messanger"
+        android:title="@string/title_messanger" />
+
+    <item
+        android:id="@+id/navigation_match"
+        android:title="@string/title_profile" />
+</menu>
