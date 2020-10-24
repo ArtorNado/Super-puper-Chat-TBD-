@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">Super-puper Chat (TBD)</string>
+
+    <!--bottom navigation-->
+    <string name="title_messanger">Messanger</string>
+    <string name="title_X">X</string>
+    <string name="title_profile">Profile</string>
+
 </resources>
