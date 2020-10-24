@@ -1,7 +1,6 @@
 package com.example.superpuperchattbd.main
 
 import android.app.Activity
-import com.example.superpuperchattbd.common.MainActivtyScope
 import dagger.BindsInstance
 import dagger.Subcomponent
 
