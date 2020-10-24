@@ -1,6 +1,6 @@
 package com.example.superpuperchattbd.messenger.presentation
 
-import androidx.lifecycle.ViewModel
+import com.example.superpuperchattbd.common.base.BaseViewModel
 
-class MessengerViewModel : ViewModel() {
+class MessengerViewModel : BaseViewModel() {
 }
