@@ -5,8 +5,8 @@
         android:title="@string/title_X" />
 
     <item
-        android:id="@+id/navigation_messanger"
-        android:title="@string/title_messanger" />
+        android:id="@+id/navigation_messenger"
+        android:title="@string/title_messenger" />
 
     <item
         android:id="@+id/navigation_match"
