@@ -4,6 +4,7 @@ import com.example.superpuperchattbd.main.MainActivityFeatureSubcomponent
 import com.example.superpuperchattbd.app.App
 import com.example.superpuperchattbd.app.di.scope.ApplicationScope
 import com.example.superpuperchattbd.common.di.ViewModelFactoryModule
+import com.example.superpuperchattbd.messenger.di.MessengerFeatureSubcomponent
 import dagger.BindsInstance
 import dagger.Component
 
@@ -14,6 +15,8 @@ import dagger.Component
 interface AppComponent {
 
     fun provideMainActivitySubcomponent(): MainActivityFeatureSubcomponent.Builder
+
+    fun provideMessengerFeatureSubcomponent(): MessengerFeatureSubcomponent.Builder
 
     @Component.Builder
     interface Builder {

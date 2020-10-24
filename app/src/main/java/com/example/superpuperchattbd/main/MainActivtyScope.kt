@@ -1,4 +1,4 @@
-package com.example.superpuperchattbd.common
+package com.example.superpuperchattbd.main
 
 import javax.inject.Scope
 
