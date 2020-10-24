@@ -6,8 +6,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.example.superpuperchattbd.R
+import com.example.superpuperchattbd.common.base.presentation.BaseFragment
 
-class MessengerFragment : Fragment() {
+class MessengerFragment : BaseFragment() {
 
     private lateinit var viewModel: MessengerViewModel
 
@@ -16,6 +17,18 @@ class MessengerFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         return inflater.inflate(R.layout.messenger_fragment, container, false)
+    }
+
+    override fun inject() {
+        TODO("Not yet implemented")
+    }
+
+    override fun initClickListeners() {
+        TODO("Not yet implemented")
+    }
+
+    override fun setupViews() {
+        TODO("Not yet implemented")
     }
 
 }
