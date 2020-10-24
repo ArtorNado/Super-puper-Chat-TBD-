@@ -1,4 +1,4 @@
-package com.example.super_puperchattbd
+package com.example.superpuperchattbd
 
 import org.junit.Test
 
