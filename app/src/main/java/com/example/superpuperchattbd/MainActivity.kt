@@ -9,5 +9,6 @@ class MainActivity : AppCompatActivity() {
         Injector.plusMainActivityFeatureSubcomponent(this)
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        //
     }
 }
