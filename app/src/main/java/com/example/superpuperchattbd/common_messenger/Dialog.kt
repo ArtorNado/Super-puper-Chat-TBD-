@@ -1,6 +1,6 @@
 package com.example.superpuperchattbd.common_messenger
 
-data class Message(
+data class Dialog(
     val id: Int,
     val senderName: String,
     val lastMessage: String,
