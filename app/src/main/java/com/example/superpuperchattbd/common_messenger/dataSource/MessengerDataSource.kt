@@ -6,6 +6,7 @@ import com.example.superpuperchattbd.common_messenger.Message
 class MessengerDataSource(
     private val interactor: MessengerDataSourceInteractor
 ) : PositionalDataSource<Message>() {
+
     override fun loadRange(params: LoadRangeParams, callback: LoadRangeCallback<Message>) {
         TODO("Not yet implemented")
     }
