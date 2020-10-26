@@ -80,6 +80,7 @@ dependencies {
 
     //paging list library
     implementation "android.arch.paging:runtime:1.0.1"
+    implementation "androidx.paging:paging-rxjava2:2.1.2"
 
     //room
     implementation 'androidx.room:room-runtime:2.2.5'
