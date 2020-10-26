@@ -5,6 +5,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.example.superpuperchattbd.common.di.ViewModelKey
 import com.example.superpuperchattbd.messenger.di.scope.MessengerScope
+import com.example.superpuperchattbd.messenger.domain.MessengerInteractor
 import com.example.superpuperchattbd.messenger.presentation.MessengerViewModel
 import dagger.Module
 import dagger.Provides
@@ -17,8 +18,8 @@ class MessengerFeatureModule {
     @Provides
     @IntoMap
     @ViewModelKey(MessengerViewModel::class)
-    fun provideMatchListViewModel(): ViewModel {
-        return MessengerViewModel()
+    fun provideMatchListViewModel(interactor: MessengerInteractor): ViewModel {
+        return MessengerViewModel(interactor)
     }
 
     @MessengerScope
