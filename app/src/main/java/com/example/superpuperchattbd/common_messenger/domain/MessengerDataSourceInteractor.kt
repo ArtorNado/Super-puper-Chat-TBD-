@@ -1,4 +1,4 @@
-package com.example.superpuperchattbd.messenger.domain
+package com.example.superpuperchattbd.common_messenger.domain
 
 import androidx.paging.DataSource
 import com.example.superpuperchattbd.core_db.model.DialogEntity

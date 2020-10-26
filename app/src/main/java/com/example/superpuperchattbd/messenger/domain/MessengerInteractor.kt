@@ -2,6 +2,7 @@ package com.example.superpuperchattbd.messenger.domain
 
 import android.util.Log
 import androidx.paging.DataSource
+import com.example.superpuperchattbd.common_messenger.domain.MessengerDataSourceInteractor
 import com.example.superpuperchattbd.core_db.AppDatabase
 import com.example.superpuperchattbd.core_db.model.DialogEntity
 import io.reactivex.Completable

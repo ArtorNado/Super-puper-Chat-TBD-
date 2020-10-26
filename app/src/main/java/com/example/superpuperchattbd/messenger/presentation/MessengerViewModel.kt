@@ -5,7 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.paging.PagedList
 import androidx.paging.RxPagedListBuilder
 import com.example.superpuperchattbd.common.base.BaseViewModel
-import com.example.superpuperchattbd.messenger.domain.MessengerDataSourceInteractor
+import com.example.superpuperchattbd.common_messenger.domain.MessengerDataSourceInteractor
 import com.example.superpuperchattbd.core_db.model.DialogEntity
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
