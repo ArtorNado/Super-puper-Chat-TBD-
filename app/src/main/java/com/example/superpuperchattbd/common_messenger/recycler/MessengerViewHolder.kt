@@ -7,7 +7,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.superpuperchattbd.R
 import com.example.superpuperchattbd.core_db.model.DialogEntity
 import kotlinx.android.extensions.LayoutContainer
-import kotlinx.android.synthetic.main.test_template.view.*
 
 class MessengerViewHolder private constructor(
     override val containerView: View,
@@ -15,14 +14,13 @@ class MessengerViewHolder private constructor(
 ) : RecyclerView.ViewHolder(containerView), LayoutContainer {
 
     fun bind(dialogEntity: DialogEntity) {
-        containerView.textView.text = dialogEntity.id.toString()
     }
 
     companion object {
         fun create(parent: ViewGroup, onMessageClick: (DialogEntity) -> Unit) =
             MessengerViewHolder(
                 LayoutInflater.from(parent.context).inflate(
-                    R.layout.test_template,
+                    R.layout.dialog_template,
                     parent,
                     false
                 ),
