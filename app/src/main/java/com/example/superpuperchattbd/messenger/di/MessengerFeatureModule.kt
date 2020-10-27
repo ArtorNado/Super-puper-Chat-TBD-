@@ -4,6 +4,8 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.example.superpuperchattbd.common.di.ViewModelKey
+import com.example.superpuperchattbd.messenger.data.repository.MessengerRepositoryImpl
+import com.example.superpuperchattbd.messenger.data.interfaces.MessengerRepository
 import com.example.superpuperchattbd.messenger.di.scope.MessengerScope
 import com.example.superpuperchattbd.messenger.domain.MessengerInteractor
 import com.example.superpuperchattbd.messenger.presentation.MessengerViewModel
@@ -29,5 +31,10 @@ class MessengerFeatureModule {
         viewModelFactory: ViewModelProvider.Factory
     ): MessengerViewModel =
         ViewModelProvider(fragment, viewModelFactory).get(MessengerViewModel::class.java)
+
+    @MessengerScope
+    @Provides
+    fun provideMessengerRepository(messengerRepository: MessengerRepositoryImpl): MessengerRepository =
+        messengerRepository
 
 }

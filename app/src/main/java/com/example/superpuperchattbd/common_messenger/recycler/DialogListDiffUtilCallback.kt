@@ -1,17 +1,17 @@
 package com.example.superpuperchattbd.common_messenger.recycler
 
 import androidx.recyclerview.widget.DiffUtil
-import com.example.superpuperchattbd.core_db.model.DialogEntity
+import com.example.superpuperchattbd.common_messenger.Dialog
 
-object DialogListDiffUtilCallback : DiffUtil.ItemCallback<DialogEntity>() {
+object DialogListDiffUtilCallback : DiffUtil.ItemCallback<Dialog>() {
 
-    override fun areItemsTheSame(oldItem: DialogEntity, newItem: DialogEntity): Boolean {
+    override fun areItemsTheSame(oldItem: Dialog, newItem: Dialog): Boolean {
         return oldItem.id == newItem.id &&
                 oldItem.lastMessage == newItem.lastMessage &&
                 oldItem.lastMessageTime == newItem.lastMessageTime
     }
 
-    override fun areContentsTheSame(oldItem: DialogEntity, newItem: DialogEntity): Boolean {
+    override fun areContentsTheSame(oldItem: Dialog, newItem: Dialog): Boolean {
         return oldItem == newItem
     }
 }
