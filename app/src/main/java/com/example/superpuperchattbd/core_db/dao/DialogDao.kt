@@ -12,7 +12,7 @@ import io.reactivex.Completable
 @Dao
 interface DialogDao {
 
-    @Query("SELECT * FROM ${Table.TABLE_DIALOG}")
+    @Query("SELECT * FROM ${Table.TABLE_DIALOG} ORDER BY lastMessageTime ASC")
     fun getDialogs(): DataSource.Factory<Int, DialogEntity>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
