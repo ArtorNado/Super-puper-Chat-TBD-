@@ -10,7 +10,6 @@ import com.example.superpuperchattbd.messenger.domain.MessengerInteractor
 import kotlinx.android.synthetic.main.messenger_fragment.*
 import javax.inject.Inject
 
-
 class MessengerFragment : BaseFragment<MessengerViewModel>() {
 
     @Inject

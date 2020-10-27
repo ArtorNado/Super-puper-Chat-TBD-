@@ -8,7 +8,6 @@ import androidx.room.Query
 import com.example.superpuperchattbd.core_db.constants.Table
 import com.example.superpuperchattbd.core_db.model.DialogEntity
 import io.reactivex.Completable
-import io.reactivex.Single
 
 @Dao
 interface DialogDao {

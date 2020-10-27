@@ -2,11 +2,11 @@ package com.example.superpuperchattbd.common_messenger.recycler
 
 import android.view.ViewGroup
 import androidx.paging.PagedListAdapter
-import com.example.superpuperchattbd.core_db.model.DialogEntity
+import com.example.superpuperchattbd.common_messenger.Dialog
 
 class MessengerAdapter(
-    private val onMessageClick: (DialogEntity) -> Unit
-) : PagedListAdapter<DialogEntity, MessengerViewHolder>(
+    private val onMessageClick: (Dialog) -> Unit
+) : PagedListAdapter<Dialog, MessengerViewHolder>(
     DialogListDiffUtilCallback
 ) {
 
@@ -15,7 +15,7 @@ class MessengerAdapter(
     }
 
     override fun onBindViewHolder(holder: MessengerViewHolder, position: Int) {
-        val item = getItem(position) as DialogEntity
+        val item = getItem(position) as Dialog
         holder.bind(item)
     }
 }
