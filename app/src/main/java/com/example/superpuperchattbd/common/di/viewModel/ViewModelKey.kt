@@ -1,4 +1,4 @@
-package com.example.superpuperchattbd.common.di
+package com.example.superpuperchattbd.common.di.viewModel
 
 import androidx.lifecycle.ViewModel
 import dagger.MapKey
