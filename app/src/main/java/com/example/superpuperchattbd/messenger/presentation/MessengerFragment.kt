@@ -27,7 +27,7 @@ class MessengerFragment : BaseFragment<MessengerViewModel>() {
     }
 
     override fun subscribe() {
-        viewModel.data.observe(this, Observer { factory ->
+        observe(viewModel.data, Observer { factory ->
             adapter = MessengerAdapter { }
             tv_test.adapter = adapter
             if (factory != null) {
