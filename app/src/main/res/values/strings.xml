@@ -9,5 +9,8 @@
     <string name="bla_bla">bla-bla</string>
     <string name="_18_00">18:00</string>
     <string name="change_theme">Change theme</string>
+    <string name="age" translatable="false">%d + "y.o."</string>
+    <string name="about" translatable="false">"О себе: " + %d</string>
+    <string name="email" translatable="false">"E-mail: " + %d</string>
 
 </resources>
