@@ -20,5 +20,6 @@
     <string name="profile_redaction_about_hint">"Edited information "</string>
     <string name="profile_redaction_email_hint">Edited email</string>
     <string name="profile_redaction_btn_edit_text">Edit</string>
+    <string name="edit_profile">Редактировать профиль</string>
 
 </resources>

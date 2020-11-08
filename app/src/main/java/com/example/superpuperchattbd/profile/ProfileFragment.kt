@@ -1,13 +1,16 @@
 package com.example.superpuperchattbd.profile
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.example.superpuperchattbd.R
+import com.example.superpuperchattbd.app.injector.Injector
+import com.example.superpuperchattbd.common.base.BaseFragment
 
-class ProfileFragment : Fragment() {
+class ProfileFragment : BaseFragment<ProfileViewModel>() {
+
+    override val layoutId: Int = R.layout.fragment_profile
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -22,7 +25,18 @@ class ProfileFragment : Fragment() {
         return inflater.inflate(R.layout.fragment_profile, container, false)
     }
 
-    companion object {
+    override fun inject() {
+        Injector.plusProfileSubcomponent(this).inject(this)
+    }
 
+    override fun initClickListeners() {
+
+    }
+
+    override fun setupViews() {
+
+    }
+
+    override fun subscribe() {
     }
 }
