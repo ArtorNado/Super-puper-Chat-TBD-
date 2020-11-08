@@ -1,8 +1,8 @@
 package com.example.superpuperchattbd.profile
 
-import androidx.paging.DataSource
 import com.example.superpuperchattbd.core_db.model.ProfileEntity
+import io.reactivex.Single
 
 interface ProfileRepository {
-    fun getData(): DataSource.Factory<Int, ProfileEntity>
+    fun getData(): Single<ProfileEntity>
 }
