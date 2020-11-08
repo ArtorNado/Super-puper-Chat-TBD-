@@ -1,16 +1,19 @@
-package com.example.superpuperchattbd.profile_redaction
+package com.example.superpuperchattbd.profile_redaction.presentation
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.Fragment
 import com.example.superpuperchattbd.R
+import com.example.superpuperchattbd.app.injector.Injector
+import com.example.superpuperchattbd.common.base.BaseFragment
 
 private const val ARG_PARAM1 = "param1"
 private const val ARG_PARAM2 = "param2"
 
-class ProfileRedactionFragment : Fragment() {
+class ProfileRedactionFragment : BaseFragment<ProfileRedactionViewModel>() {
+
+    override val layoutId: Int = R.layout.fragment_profile_redaction
 
     private var param1: String? = null
     private var param2: String? = null
@@ -27,7 +30,7 @@ class ProfileRedactionFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_profile_redaction, container, false)
+        return inflater.inflate(layoutId, container, false)
     }
 
     companion object {
@@ -38,5 +41,26 @@ class ProfileRedactionFragment : Fragment() {
                     putString(ARG_PARAM2, param2)
                 }
             }
+    }
+
+    override fun inject() {
+        Injector.plusProfileRedactionSubcomponent(this).inject(this)
+    }
+
+    override fun initClickListeners() {
+        TODO("Not yet implemented")
+    }
+
+    override fun setupViews() {
+        TODO("Not yet implemented")
+    }
+
+    override fun subscribe() {
+        TODO("Not yet implemented")
+    }
+
+    override fun onDestroy() {
+        Injector.clearMessengerFeatureSubcomponent()
+        super.onDestroy()
     }
 }
