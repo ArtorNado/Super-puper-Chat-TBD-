@@ -12,12 +12,12 @@ import com.example.superpuperchattbd.core_db.type_converters.MessageConverter
         childColumns = ["sender_id"],
         onDelete = ForeignKey.CASCADE)]
 )
+@TypeConverters(MessageConverter::class)
 data class DialogEntity(
     @PrimaryKey
     val id: Int,
-    @ColumnInfo(name = "sender_id")
+    @ColumnInfo(name = "sender_id", index = true)
     val senderId: Int,
     val imageUrl: String,
-    @TypeConverters(MessageConverter::class)
     val messages: List<Message>
 )
