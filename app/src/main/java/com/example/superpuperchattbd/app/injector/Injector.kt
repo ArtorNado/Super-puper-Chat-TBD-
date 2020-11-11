@@ -36,6 +36,9 @@ object Injector {
 
     fun clearMessengerFeatureSubcomponent() {
         messengerFeatureSubcomponent = null
+    }
+
+    fun clearProfileRedactionSubcomponent() {
         profileRedactionSubcomponent = null
     }
 }

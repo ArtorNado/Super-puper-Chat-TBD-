@@ -2,6 +2,7 @@ package com.example.superpuperchattbd.profile_redaction.data.repository
 
 import com.example.superpuperchattbd.core_db.AppDatabase
 import com.example.superpuperchattbd.core_db.model.ProfileEntity
+import io.reactivex.Completable
 import io.reactivex.Single
 import javax.inject.Inject
 
@@ -9,5 +10,7 @@ class ProfileRedactionRepositoryImpl @Inject constructor(
     private val db: AppDatabase
 ) : ProfileRedactionRepository {
 
-    override fun getUserData(id: Int): Single<ProfileEntity> = db.profileDao().getProfile()
+    override fun getUserData(id: Int): Single<ProfileEntity> = db.profileDao().getProfile(id)
+
+    override fun saveUserData(profileEntity: ProfileEntity): Completable = db.profileDao().saveUserData(profileEntity)
 }
