@@ -4,5 +4,4 @@ import javax.inject.Inject
 
 class RouterImpl @Inject constructor(
     private val navControllerProvider: NavControllerProvider
-) : Router {
-}
+) : Router

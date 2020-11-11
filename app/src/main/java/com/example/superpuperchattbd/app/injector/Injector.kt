@@ -5,8 +5,8 @@ import com.example.superpuperchattbd.app.di.AppComponent
 import com.example.superpuperchattbd.app.di.DaggerAppComponent
 import com.example.superpuperchattbd.messenger.di.MessengerFeatureSubcomponent
 import com.example.superpuperchattbd.messenger.presentation.MessengerFragment
-import com.example.superpuperchattbd.profile.ProfileFragment
-import com.example.superpuperchattbd.profile.ProfileSubcomponent
+import com.example.superpuperchattbd.profile.presentation.ProfileFragment
+import com.example.superpuperchattbd.profile.di.ProfileSubcomponent
 import com.example.superpuperchattbd.profile_redaction.di.ProfileRedactionSubcomponent
 import com.example.superpuperchattbd.profile_redaction.presentation.ProfileRedactionFragment
 
@@ -45,6 +45,9 @@ object Injector {
 
     fun clearMessengerFeatureSubcomponent() {
         messengerFeatureSubcomponent = null
+    }
+
+    fun clearProfileRedactionSubcomponent() {
         profileRedactionSubcomponent = null
     }
 
