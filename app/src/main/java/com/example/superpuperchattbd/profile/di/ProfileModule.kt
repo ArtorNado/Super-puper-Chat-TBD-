@@ -1,14 +1,14 @@
-package com.example.superpuperchattbd.profile
+package com.example.superpuperchattbd.profile.di
 
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.example.superpuperchattbd.common.di.viewModel.ViewModelKey
-import com.example.superpuperchattbd.profile_redaction.data.repository.ProfileRedactionRepository
-import com.example.superpuperchattbd.profile_redaction.data.repository.ProfileRedactionRepositoryImpl
-import com.example.superpuperchattbd.profile_redaction.di.scope.ProfileRedactionScope
-import com.example.superpuperchattbd.profile_redaction.domain.ProfileRedactionInteractorImpl
-import com.example.superpuperchattbd.profile_redaction.presentation.ProfileRedactionViewModel
+import com.example.superpuperchattbd.profile.data.ProfileRepository
+import com.example.superpuperchattbd.profile.data.ProfileRepositoryImpl
+import com.example.superpuperchattbd.profile.di.scope.ProfileScope
+import com.example.superpuperchattbd.profile.domain.ProfileInteractorImpl
+import com.example.superpuperchattbd.profile.presentation.ProfileViewModel
 import dagger.Module
 import dagger.Provides
 import dagger.multibindings.IntoMap
@@ -21,7 +21,9 @@ class ProfileModule {
     @IntoMap
     @ViewModelKey(ProfileViewModel::class)
     fun provideViewModel(interactor: ProfileInteractorImpl): ViewModel {
-        return ProfileViewModel(interactor)
+        return ProfileViewModel(
+            interactor
+        )
     }
 
     @ProfileScope
