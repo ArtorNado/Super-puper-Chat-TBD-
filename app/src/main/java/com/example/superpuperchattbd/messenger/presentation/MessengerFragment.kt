@@ -6,14 +6,9 @@ import com.example.superpuperchattbd.R
 import com.example.superpuperchattbd.app.injector.Injector
 import com.example.superpuperchattbd.common.base.BaseFragment
 import com.example.superpuperchattbd.common_messenger.recycler.MessengerAdapter
-import com.example.superpuperchattbd.messenger.domain.MessengerInteractor
 import kotlinx.android.synthetic.main.messenger_fragment.*
-import javax.inject.Inject
 
 class MessengerFragment : BaseFragment<MessengerViewModel>() {
-
-    @Inject
-    lateinit var interactor: MessengerInteractor
 
     override val layoutId: Int = R.layout.messenger_fragment
 
@@ -32,7 +27,7 @@ class MessengerFragment : BaseFragment<MessengerViewModel>() {
     }
 
     override fun subscribe() {
-        viewModel.data.observe(this, Observer { factory ->
+        observe(viewModel.data, Observer { factory ->
             adapter = MessengerAdapter { }
             tv_test.adapter = adapter
             if (factory != null) {

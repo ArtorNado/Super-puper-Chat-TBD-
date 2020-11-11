@@ -7,13 +7,15 @@ import androidx.paging.RxPagedListBuilder
 import com.example.superpuperchattbd.common.base.BaseViewModel
 import com.example.superpuperchattbd.common_messenger.Dialog
 import com.example.superpuperchattbd.common_messenger.domain.MessengerDataSourceInteractor
+import com.example.superpuperchattbd.messenger.router.MessengerRouter
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 
 private const val PAGE_SIZE = 10
 
 class MessengerViewModel(
-    interactor: MessengerDataSourceInteractor
+    private val interactor: MessengerDataSourceInteractor,
+    private val router: MessengerRouter
 ) : BaseViewModel() {
 
     private val _data = MutableLiveData<PagedList<Dialog>>()

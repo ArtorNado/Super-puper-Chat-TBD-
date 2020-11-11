@@ -2,6 +2,9 @@ package com.example.superpuperchattbd.app.di
 
 import com.example.superpuperchattbd.app.App
 import com.example.superpuperchattbd.app.di.scope.ApplicationScope
+import com.example.superpuperchattbd.common.di.navigation.NavigationModule
+import com.example.superpuperchattbd.common.di.navigation.RouterModule
+import com.example.superpuperchattbd.common.di.viewModel.ViewModelFactoryModule
 import com.example.superpuperchattbd.chat.di.ChatFeatureSubcomponent
 import com.example.superpuperchattbd.common.di.navigation.NavigationModule
 import com.example.superpuperchattbd.common.di.navigation.RouterModule
@@ -16,7 +19,9 @@ import dagger.Component
 
 @ApplicationScope
 @Component(
-    modules = [AppModule::class, ViewModelFactoryModule::class, DatabaseModule::class]
+    modules =
+    [AppModule::class, ViewModelFactoryModule::class, DatabaseModule::class,
+        RouterModule::class, NavigationModule::class]
 )
 interface AppComponent {
 

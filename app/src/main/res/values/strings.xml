@@ -5,5 +5,21 @@
     <string name="title_messenger">Messenger</string>
     <string name="title_X">X</string>
     <string name="title_profile">Profile</string>
+    <string name="pushkin">Pushkin</string>
+    <string name="bla_bla">bla-bla</string>
+    <string name="_18_00">18:00</string>
+    <string name="change_theme">Change theme</string>
+    <string name="age" translatable="false">%d + "y.o."</string>
+    <string name="about" translatable="false">"О себе: " + %d</string>
+    <string name="email" translatable="false">"E-mail: " + %d</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="profile_redaction_name_hint" >Edited name</string>
+    <string name="profile_redaction_age_hint">Edited age</string>
+    <string name="profile_redaction_status_hint">Edited status</string>
+    <string name="profile_redaction_about_hint">"Edited information "</string>
+    <string name="profile_redaction_email_hint">Edited email</string>
+    <string name="profile_redaction_btn_edit_text">Edit</string>
+    <string name="edit_profile">Редактировать профиль</string>
 
 </resources>
