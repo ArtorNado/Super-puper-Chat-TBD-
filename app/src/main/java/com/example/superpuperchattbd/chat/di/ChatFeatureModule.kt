@@ -5,9 +5,9 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.example.superpuperchattbd.chat.data.interfaces.ChatRepository
 import com.example.superpuperchattbd.chat.data.repository.ChatRepositoryImpl
+import com.example.superpuperchattbd.chat.domain.ChatInteractorImpl
 import com.example.superpuperchattbd.chat.presentation.ChatViewModel
 import com.example.superpuperchattbd.common.di.viewModel.ViewModelKey
-import com.example.superpuperchattbd.common_chat.domain.ChatInteractor
 import com.example.superpuperchattbd.messenger.di.scope.MessengerScope
 import dagger.Module
 import dagger.Provides
@@ -20,7 +20,7 @@ class ChatFeatureModule {
     @Provides
     @IntoMap
     @ViewModelKey(ChatViewModel::class)
-    fun provideViewModel(interactor: ChatInteractor): ViewModel {
+    fun provideViewModel(interactor: ChatInteractorImpl): ViewModel {
         return ChatViewModel(interactor)
     }
 
