@@ -9,6 +9,7 @@ import com.example.superpuperchattbd.profile_redaction.data.repository.ProfileRe
 import com.example.superpuperchattbd.profile_redaction.di.scope.ProfileRedactionScope
 import com.example.superpuperchattbd.profile_redaction.domain.ProfileRedactionInteractorImpl
 import com.example.superpuperchattbd.profile_redaction.presentation.ProfileRedactionViewModel
+import com.example.superpuperchattbd.profile_redaction.router.ProfileRedactionRouter
 import dagger.Module
 import dagger.Provides
 import dagger.multibindings.IntoMap
@@ -20,8 +21,8 @@ class ProfileRedactionModule {
     @Provides
     @IntoMap
     @ViewModelKey(ProfileRedactionViewModel::class)
-    fun provideViewModel(interactor: ProfileRedactionInteractorImpl): ViewModel {
-        return ProfileRedactionViewModel(interactor)
+    fun provideViewModel(interactor: ProfileRedactionInteractorImpl, router: ProfileRedactionRouter): ViewModel {
+        return ProfileRedactionViewModel(interactor, router)
     }
 
     @ProfileRedactionScope

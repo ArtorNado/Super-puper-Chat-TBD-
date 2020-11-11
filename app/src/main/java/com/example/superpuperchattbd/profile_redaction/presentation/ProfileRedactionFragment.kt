@@ -39,6 +39,7 @@ class ProfileRedactionFragment : BaseFragment<ProfileRedactionViewModel>() {
     override fun initClickListeners() {
         btnEdit.setOnClickListener{
             if (isFieldsEdited()) {
+                tvError.visibility = View.GONE
                 viewModel.saveUserData(
                     ProfileEntity(
                         0,
@@ -50,12 +51,15 @@ class ProfileRedactionFragment : BaseFragment<ProfileRedactionViewModel>() {
                         viewModel.imageUrl ?: ""
                     )
                 )
+            } else {
+                tvError.visibility = View.VISIBLE
             }
         }
     }
 
     private fun isFieldsEdited(): Boolean {
-        return true
+        return !(etName.text.isEmpty() || etAge.text.isEmpty() || etEmail.text.isEmpty() ||
+                etAbout.text.isEmpty() || etStatus.text.isEmpty())
     }
 
     override fun setupViews() {
@@ -69,6 +73,11 @@ class ProfileRedactionFragment : BaseFragment<ProfileRedactionViewModel>() {
             etStatus.setText(userData.status)
             etAbout.setText(userData.about)
             etEmail.setText(userData.email)
+        })
+        viewModel.navigateToProfile.observe(viewLifecycleOwner, Observer { success ->
+            if (success) {
+                viewModel.navigateToProfile()
+            }
         })
     }
 

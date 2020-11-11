@@ -10,7 +10,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/profile_redaction_title_text"
-        android:layout_marginVertical="16dp"
+        android:layout_marginTop="16dp"
         android:textSize="24sp"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -18,10 +18,24 @@
         app:layout_constraintBottom_toTopOf="@id/tvWriteNewName"/>
 
     <TextView
+        android:id="@+id/tvError"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="18sp"
+        android:textColor="@android:color/holo_red_light"
+        android:layout_marginTop="4dp"
+        android:visibility="gone"
+        android:text="@string/tv_error_text"
+        app:layout_constraintTop_toBottomOf="@id/profileRedactionTitle"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <TextView
         android:id="@+id/tvWriteNewName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="18sp"
+        android:layout_marginTop="16dp"
         android:text="@string/tv_write_new_name_text"
         app:layout_constraintTop_toBottomOf="@id/profileRedactionTitle"
         app:layout_constraintBottom_toTopOf="@id/etName"
@@ -59,6 +73,7 @@
         android:hint="@string/profile_redaction_age_hint"
         android:layout_marginBottom="16dp"
         android:textSize="20sp"
+        android:inputType="number"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tvWriteAge"
