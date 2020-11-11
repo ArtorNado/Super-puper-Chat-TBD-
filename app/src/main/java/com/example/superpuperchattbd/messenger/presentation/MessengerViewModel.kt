@@ -14,8 +14,8 @@ import io.reactivex.schedulers.Schedulers
 private const val PAGE_SIZE = 10
 
 class MessengerViewModel(
-    private val interactor: MessengerDataSourceInteractor,
-    private val router: MessengerRouter
+    interactor: MessengerDataSourceInteractor,
+    router: MessengerRouter
 ) : BaseViewModel() {
 
     private val _data = MutableLiveData<PagedList<Dialog>>()

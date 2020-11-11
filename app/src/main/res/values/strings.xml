@@ -26,5 +26,6 @@
     <string name="tv_write_status_text">Write new status</string>
     <string name="tv_write_about_text">Write new information</string>
     <string name="tv_wtite_email_text">Write new email</string>
+    <string name="edit_profile">Редактировать профиль</string>
 
 </resources>

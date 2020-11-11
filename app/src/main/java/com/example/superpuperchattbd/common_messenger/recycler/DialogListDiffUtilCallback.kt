@@ -7,8 +7,7 @@ object DialogListDiffUtilCallback : DiffUtil.ItemCallback<Dialog>() {
 
     override fun areItemsTheSame(oldItem: Dialog, newItem: Dialog): Boolean {
         return oldItem.id == newItem.id &&
-                oldItem.lastMessage == newItem.lastMessage &&
-                oldItem.lastMessageTime == newItem.lastMessageTime
+                oldItem.messages == newItem.messages
     }
 
     override fun areContentsTheSame(oldItem: Dialog, newItem: Dialog): Boolean {

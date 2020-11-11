@@ -7,11 +7,9 @@ fun mapDialogEntityToLocal(dialogEntity: DialogEntity): Dialog {
     return with(dialogEntity){
         Dialog(
             id,
-            interlocutorName,
-            lastMessage,
-            lastMessageTime,
+            senderId,
             imageUrl,
-            lastMessageStatus
+            messages
         )
     }
 }

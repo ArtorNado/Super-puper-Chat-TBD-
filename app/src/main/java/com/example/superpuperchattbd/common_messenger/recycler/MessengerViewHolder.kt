@@ -15,11 +15,12 @@ class MessengerViewHolder private constructor(
 ) : RecyclerView.ViewHolder(containerView), LayoutContainer {
 
     fun bind(dialog: Dialog) {
+        val lastMessage = dialog.messages.get(dialog.messages.lastIndex)
         containerView.apply {
-            tv_userName.text = dialog.senderName
-            tv_message.text = dialog.lastMessage
-            tv_time.text = dialog.lastMessageTime
-            when(dialog.messageStatus){
+            tv_userName.text = lastMessage.userId.toString()
+            tv_message.text = lastMessage.message
+            tv_time.text = lastMessage.date.toString()
+            when(lastMessage.messageStatus){
                 0 -> iv_new.visibility = View.VISIBLE
                 1 -> iv_new.visibility = View.GONE
             }
