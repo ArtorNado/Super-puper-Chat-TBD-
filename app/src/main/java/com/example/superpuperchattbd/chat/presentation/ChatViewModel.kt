@@ -28,5 +28,4 @@ class ChatViewModel @Inject constructor(
             ))
     }
 
-
 }

@@ -1,12 +1,9 @@
 package com.example.superpuperchattbd.chat.presentation
 
-import android.os.Build
-import android.util.Log
 import android.view.MotionEvent
 import android.view.View
 import android.widget.TextView
 import android.widget.Toast
-import androidx.annotation.RequiresApi
 import androidx.lifecycle.Observer
 import com.example.superpuperchattbd.R
 import com.example.superpuperchattbd.app.injector.Injector
@@ -29,7 +26,10 @@ class ChatFragment: BaseFragment<ChatViewModel>() {
     override fun initClickListeners() {
         et_messages.setOnTouchListener { view, event ->
             if (event.action == MotionEvent.ACTION_UP) {
-                if(event.rawX >= (et_messages.right - et_messages.compoundDrawables[2].bounds.width())) {
+                val position = et_messages.run {
+                    right - compoundDrawables[DRAWABLE_RIGTH_KEY].bounds.width()
+                }
+                if (event.rawX >= position) {
                     val textView = view as TextView
                     Toast.makeText(
                         this@ChatFragment.context,
@@ -63,5 +63,9 @@ class ChatFragment: BaseFragment<ChatViewModel>() {
         navView?.visibility = View.VISIBLE
         Injector.clearChatFeatureSubcomponent()
         super.onDestroyView()
+    }
+
+    companion object {
+        private const val DRAWABLE_RIGTH_KEY = 2
     }
 }

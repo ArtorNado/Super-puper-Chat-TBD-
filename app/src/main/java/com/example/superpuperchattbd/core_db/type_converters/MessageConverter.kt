@@ -6,13 +6,13 @@ import java.lang.StringBuilder
 import java.text.SimpleDateFormat
 import java.util.*
 
-private const val patter = "dd-MM-yyyy HH:mm"
+private const val DATA_FORMAT = "dd-MM-yyyy HH:mm"
 
 class MessageConverter {
 
     @TypeConverter
     fun fromMessages(messages: List<Message>): String {
-        val formatter = SimpleDateFormat(patter, Locale.ENGLISH)
+        val formatter = SimpleDateFormat(DATA_FORMAT, Locale.ENGLISH)
         val messagesString = StringBuilder()
         messages
             .map { "${it.userId}, ${it.message}, ${formatter.format(it.date)}, ${it.userId}}" }
@@ -22,15 +22,23 @@ class MessageConverter {
 
     @TypeConverter
     fun toMessages(messages: String): List<Message> {
-        val parser =  SimpleDateFormat(patter, Locale.ENGLISH)
+        val parser =  SimpleDateFormat(DATA_FORMAT, Locale.ENGLISH)
         return messages.split("\n").map {
             val fields = it.split(", ")
             Message(
-                userId = fields[0].toInt(),
-                message = fields[1],
-                date = parser.parse(fields[2]) ?: Date(),
-                messageStatus = fields[3].toInt())
+                userId = fields[USER_ID_KEY].toInt(),
+                message = fields[MESSAGE_KEY],
+                date = parser.parse(fields[DATE_KEY]) ?: Date(),
+                messageStatus = fields[MESSAGE_STATUS_KEY].toInt())
         }
+    }
+
+    companion object {
+
+        private const val USER_ID_KEY = 0
+        private const val MESSAGE_KEY = 1
+        private const val DATE_KEY = 2
+        private const val MESSAGE_STATUS_KEY = 3
     }
 
 }

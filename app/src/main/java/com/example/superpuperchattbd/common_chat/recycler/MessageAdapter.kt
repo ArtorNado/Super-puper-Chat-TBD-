@@ -3,11 +3,9 @@ package com.example.superpuperchattbd.common_chat.recycler
 import android.view.ViewGroup
 import androidx.recyclerview.widget.ListAdapter
 import com.example.superpuperchattbd.common_chat.MessageType
-import com.example.superpuperchattbd.common_messenger.Dialog
 import com.example.superpuperchattbd.common_messenger.Message
 
-class MessageAdapter(
-) : ListAdapter<Message, MessageViewHolder>(
+class MessageAdapter : ListAdapter<Message, MessageViewHolder>(
     MessagesListDiffUtilCallback
 ) {
 

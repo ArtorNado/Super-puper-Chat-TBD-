@@ -7,7 +7,6 @@ import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import com.example.superpuperchattbd.core_db.constants.Table
 import com.example.superpuperchattbd.core_db.model.DialogEntity
-import com.google.android.material.tabs.TabLayout
 import io.reactivex.Completable
 import io.reactivex.Single
 
