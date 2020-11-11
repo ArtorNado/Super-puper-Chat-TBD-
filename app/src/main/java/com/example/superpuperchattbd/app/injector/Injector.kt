@@ -3,6 +3,8 @@ package com.example.superpuperchattbd.app.injector
 import com.example.superpuperchattbd.app.App
 import com.example.superpuperchattbd.app.di.AppComponent
 import com.example.superpuperchattbd.app.di.DaggerAppComponent
+import com.example.superpuperchattbd.chat.di.ChatFeatureSubcomponent
+import com.example.superpuperchattbd.chat.presentation.ChatFragment
 import com.example.superpuperchattbd.messenger.di.MessengerFeatureSubcomponent
 import com.example.superpuperchattbd.messenger.presentation.MessengerFragment
 import com.example.superpuperchattbd.profile.presentation.ProfileFragment
@@ -17,6 +19,7 @@ object Injector {
     private var messengerFeatureSubcomponent: MessengerFeatureSubcomponent? = null
     private var profileRedactionSubcomponent: ProfileRedactionSubcomponent? = null
     private var profileSubcomponent: ProfileSubcomponent? = null
+    private var chatFeatureSubcomponent: ChatFeatureSubcomponent? = null
 
     fun init(app: App) {
         appComponent = DaggerAppComponent.builder()
@@ -54,5 +57,18 @@ object Injector {
     fun clearProfileSubcomponent() {
         profileSubcomponent = null
     }
+
+    fun plusChatFeatureSubcomponent(fragment: ChatFragment): ChatFeatureSubcomponent =
+        chatFeatureSubcomponent
+            ?: appComponent.provideChatFeatureSubcomponent().withFragment(fragment)
+                .build().also {
+                    chatFeatureSubcomponent = it
+                }
+
+    fun clearChatFeatureSubcomponent() {
+        chatFeatureSubcomponent = null
+    }
+
+
 }
 

@@ -8,6 +8,7 @@ import androidx.room.Query
 import com.example.superpuperchattbd.core_db.constants.Table
 import com.example.superpuperchattbd.core_db.model.DialogEntity
 import io.reactivex.Completable
+import io.reactivex.Single
 
 @Dao
 interface DialogDao {
@@ -17,4 +18,7 @@ interface DialogDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun setDialog(dialog: DialogEntity): Completable
+
+    @Query("SELECT * FROM ${Table.TABLE_DIALOG} WHERE id=:id")
+    fun getDialogById(id: Int): Single<DialogEntity>
 }
