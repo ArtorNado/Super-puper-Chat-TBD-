@@ -14,4 +14,19 @@
         android:id="@+id/navigation_theme"
         android:name="com.example.superpuperchattbd.theme.presentation.ThemeFragment"
         android:label="ThemeFragment" />
+    <fragment
+        android:id="@+id/profileRedactionFragment"
+        android:name="com.example.superpuperchattbd.profile_redaction.presentation.ProfileRedactionFragment"
+        android:label="fragment_profile_redaction"
+        tools:layout="@layout/fragment_profile_redaction"
+        >
+        <action android:id="@+id/actionProfileRedactionToProfile"
+            app:destination="@id/profileFragment"
+            app:popUpTo="@id/profileFragment"/>
+    </fragment>
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.example.superpuperchattbd.profile.presentation.ProfileFragment"
+        android:label="ProfileFragment" />
+
 </navigation>
