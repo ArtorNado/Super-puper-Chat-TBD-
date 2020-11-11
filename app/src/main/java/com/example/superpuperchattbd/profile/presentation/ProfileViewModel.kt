@@ -1,10 +1,10 @@
-package com.example.superpuperchattbd.profile
+package com.example.superpuperchattbd.profile.presentation
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.example.superpuperchattbd.common.base.BaseViewModel
 import com.example.superpuperchattbd.core_db.model.ProfileEntity
-import com.example.superpuperchattbd.messenger.router.MessengerRouter
+import com.example.superpuperchattbd.profile.domain.ProfileInteractor
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 
@@ -18,7 +18,7 @@ class ProfileViewModel(
 
     init {
         disposables.add(
-            interactor.getData().observeOn(AndroidSchedulers.mainThread()).subscribeOn(Schedulers.io()).subscribe({
+            interactor.getData(0).observeOn(AndroidSchedulers.mainThread()).subscribeOn(Schedulers.io()).subscribe({
                 _data.value = it
             }, {
                 it.printStackTrace()
