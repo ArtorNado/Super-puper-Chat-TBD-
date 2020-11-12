@@ -27,7 +27,7 @@ class FriendsListFragment : BaseFragment<FriendsListViewModel>() {
 
     override fun subscribe() {
         observe(viewModel.data, Observer { factory ->
-            adapter = FriendsRecyclerAdapter {}
+            adapter = FriendsRecyclerAdapter { item -> viewModel.friendChosen(item) }
             rvFriends.adapter = adapter
             if (factory != null) {
                 adapter!!.submitList(factory)

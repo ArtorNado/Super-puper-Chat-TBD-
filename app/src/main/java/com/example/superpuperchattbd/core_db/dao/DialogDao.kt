@@ -13,7 +13,7 @@ interface DialogDao {
     @Query("SELECT * FROM ${Table.TABLE_DIALOG}")
     fun getDialogs(): DataSource.Factory<Int, DialogEntity>
 
-    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    @Insert(onConflict = OnConflictStrategy.ABORT)
     fun setDialog(dialog: DialogEntity): Completable
 
     @Query("SELECT * FROM ${Table.TABLE_DIALOG} WHERE id=:id")
