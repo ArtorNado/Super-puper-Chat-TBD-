@@ -27,15 +27,11 @@ class ChatFragment: BaseFragment<ChatViewModel>() {
         et_messages.setOnTouchListener { view, event ->
             if (event.action == MotionEvent.ACTION_UP) {
                 val position = et_messages.run {
-                    right - compoundDrawables[DRAWABLE_RIGTH_KEY].bounds.width()
+                    right - compoundDrawables[DRAWABLE_RIGHT_KEY].bounds.width()
                 }
                 if (event.rawX >= position) {
                     val textView = view as TextView
-                    Toast.makeText(
-                        this@ChatFragment.context,
-                        textView.text.toString(),
-                        Toast.LENGTH_LONG
-                    ).show()
+                    viewModel.sendMessage(textView.text.toString())
                     textView.text = ""
                     view.performClick()
                 }
@@ -53,9 +49,15 @@ class ChatFragment: BaseFragment<ChatViewModel>() {
     }
 
     override fun subscribe() {
-        viewModel.getDialog(0)
+        viewModel.getDialog(
+            arguments?.getInt(ID_ARG) ?: 0
+        )
         observe(viewModel.data, Observer {
+            viewModel.getProfile(it.senderId)
             adapter?.submitList(it.messages)
+        })
+        observe(viewModel.profile, Observer {
+            activity?.actionBar?.title = it.name
         })
     }
 
@@ -66,6 +68,7 @@ class ChatFragment: BaseFragment<ChatViewModel>() {
     }
 
     companion object {
-        private const val DRAWABLE_RIGTH_KEY = 2
+        private const val DRAWABLE_RIGHT_KEY = 2
+        private const val ID_ARG = "id_arg"
     }
 }

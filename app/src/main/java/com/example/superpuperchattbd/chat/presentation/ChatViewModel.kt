@@ -6,6 +6,7 @@ import androidx.lifecycle.MutableLiveData
 import com.example.superpuperchattbd.common.base.BaseViewModel
 import com.example.superpuperchattbd.common_chat.domain.ChatInteractor
 import com.example.superpuperchattbd.common_messenger.Dialog
+import com.example.superpuperchattbd.core_db.model.ProfileEntity
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import javax.inject.Inject
@@ -17,6 +18,9 @@ class ChatViewModel @Inject constructor(
     private val _data = MutableLiveData<Dialog>()
     var data: LiveData<Dialog> = _data
 
+    private val _profile = MutableLiveData<ProfileEntity>()
+    var profile: LiveData<ProfileEntity> = _profile
+
     fun getDialog(id: Int) {
         disposables.add(
             interactor.getData(id)
@@ -26,6 +30,28 @@ class ChatViewModel @Inject constructor(
                 { _data.value = it },
                 { Log.e(this@ChatViewModel.javaClass.name, it.message.toString()) }
             ))
+    }
+
+    fun sendMessage(message: String) {
+        disposables.add(
+            interactor.sendMessage(_data.value, message)
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeOn(Schedulers.io())
+                .subscribe (
+                    { _data.value = it },
+                    { Log.e(this@ChatViewModel.javaClass.name, it.message.toString()) }
+                ))
+    }
+
+    fun getProfile(id: Int) {
+        disposables.add(
+            interactor.getProfile(id)
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeOn(Schedulers.io())
+                .subscribe (
+                    { _profile.value = it },
+                    { Log.e(this@ChatViewModel.javaClass.name, it.message.toString()) }
+                ))
     }
 
 }
