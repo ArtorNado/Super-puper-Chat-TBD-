@@ -20,10 +20,6 @@ class MessengerViewHolder private constructor(
             tv_userName.text = lastMessage.userId.toString()
             tv_message.text = lastMessage.message
             tv_time.text = lastMessage.date.toString()
-            when(lastMessage.messageStatus){
-                0 -> iv_new.visibility = View.VISIBLE
-                1 -> iv_new.visibility = View.GONE
-            }
         }
     }
 
