@@ -1,7 +1,6 @@
 package com.example.superpuperchattbd.common.router
 
 import com.example.superpuperchattbd.messenger.router.MessengerRouter
-import com.example.superpuperchattbd.profile_redaction.router.ProfileRedactionRoouter
+import com.example.superpuperchattbd.profile_redaction.router.ProfileRedactionRouter
 
-interface Router : MessengerRouter, ProfileRedactionRoouter {
-}
+interface Router : MessengerRouter, ProfileRedactionRouter

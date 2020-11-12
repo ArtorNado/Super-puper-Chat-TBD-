@@ -20,6 +20,13 @@
     <string name="profile_redaction_about_hint">"Edited information "</string>
     <string name="profile_redaction_email_hint">Edited email</string>
     <string name="profile_redaction_btn_edit_text">Edit</string>
+    <string name="profile_redaction_title_text">Edit your profile</string>
+    <string name="tv_write_new_name_text">Write new name</string>
+    <string name="tv_write_age_title_text">"Write new age "</string>
+    <string name="tv_write_status_text">Write new status</string>
+    <string name="tv_write_about_text">Write new information</string>
+    <string name="tv_wtite_email_text">Write new email</string>
     <string name="edit_profile">Редактировать профиль</string>
+    <string name="tv_error_text">You should edit all fields</string>
 
 </resources>

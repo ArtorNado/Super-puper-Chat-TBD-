@@ -7,13 +7,13 @@
     <data>
         <variable
             name="viewModel"
-            type="com.example.superpuperchattbd.profile.ProfileViewModel" />
+            type="com.example.superpuperchattbd.profile.presentation.ProfileViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context="com.example.superpuperchattbd.profile.ProfileFragment">
+        tools:context="com.example.superpuperchattbd.profile.presentation.ProfileFragment">
 
         <ImageView
             android:id="@+id/iv_profile"
@@ -86,6 +86,7 @@
             tools:text="Email" />
 
         <Button
+            android:id="@+id/btn_edit_profile"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/edit_profile"

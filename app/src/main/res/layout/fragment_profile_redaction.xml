@@ -5,65 +5,149 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context="com.example.superpuperchattbd.profile_redaction.presentation.ProfileRedactionFragment">
 
+    <TextView
+        android:id="@+id/profileRedactionTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/profile_redaction_title_text"
+        android:layout_marginTop="16dp"
+        android:textSize="24sp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/tvWriteNewName"/>
+
+    <TextView
+        android:id="@+id/tvError"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="18sp"
+        android:textColor="@android:color/holo_red_light"
+        android:layout_marginTop="4dp"
+        android:visibility="gone"
+        android:text="@string/tv_error_text"
+        app:layout_constraintTop_toBottomOf="@id/profileRedactionTitle"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <TextView
+        android:id="@+id/tvWriteNewName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="18sp"
+        android:layout_marginTop="16dp"
+        android:text="@string/tv_write_new_name_text"
+        app:layout_constraintTop_toBottomOf="@id/profileRedactionTitle"
+        app:layout_constraintBottom_toTopOf="@id/etName"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
     <EditText
         android:id="@+id/etName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/profile_redaction_name_hint"
-        android:textSize="26sp"
+        android:hint="@string/profile_redaction_name_hint"
+        android:textSize="20sp"
+        android:layout_marginBottom="16dp"
         app:layout_constraintVertical_chainStyle="packed"
         app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginBottom="24dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvWriteNewName"
+        app:layout_constraintBottom_toTopOf="@id/tvWriteAge"/>
+
+    <TextView
+        android:id="@+id/tvWriteAge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/tv_write_age_title_text"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/etName"
         app:layout_constraintBottom_toTopOf="@id/etAge"/>
 
     <EditText
         android:id="@+id/etAge"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/profile_redaction_age_hint"
-        android:layout_marginBottom="24dp"
-        android:textSize="26sp"
+        android:hint="@string/profile_redaction_age_hint"
+        android:layout_marginBottom="16dp"
+        android:textSize="20sp"
+        android:inputType="number"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/etName"
+        app:layout_constraintTop_toBottomOf="@id/tvWriteAge"
+        app:layout_constraintBottom_toTopOf="@id/tvWriteStatus"/>
+
+    <TextView
+        android:id="@+id/tvWriteStatus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/tv_write_status_text"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/etAge"
         app:layout_constraintBottom_toTopOf="@id/etStatus"/>
 
     <EditText
         android:id="@+id/etStatus"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="24dp"
-        android:text="@string/profile_redaction_status_hint"
-        android:textSize="26sp"
+        android:layout_marginBottom="16dp"
+        android:hint="@string/profile_redaction_status_hint"
+        android:textSize="20sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/etAge"
-        app:layout_constraintBottom_toTopOf="@id/etAbout"/>
+        app:layout_constraintTop_toBottomOf="@id/tvWriteStatus"
+        app:layout_constraintBottom_toTopOf="@id/tvWriteAbout"/>
+
+    <TextView
+        android:id="@+id/tvWriteAbout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/tv_write_about_text"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/etStatus"
+        app:layout_constraintBottom_toTopOf="@id/etAbout"
+        />
 
     <EditText
         android:id="@+id/etAbout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="24dp"
-        android:text="@string/profile_redaction_about_hint"
-        android:textSize="26sp"
+        android:hint="@string/profile_redaction_about_hint"
+        android:textSize="20sp"
+        android:layout_marginBottom="16dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/etStatus"
-        app:layout_constraintBottom_toTopOf="@id/etEmail"/>
+        app:layout_constraintTop_toBottomOf="@id/tvWriteAbout"
+        app:layout_constraintBottom_toTopOf="@id/tvWriteEmail"/>
+
+    <TextView
+        android:id="@+id/tvWriteEmail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/tv_wtite_email_text"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/etAbout"
+        app:layout_constraintBottom_toTopOf="@id/etEmail"
+        />
 
     <EditText
         android:id="@+id/etEmail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="32dp"
-        android:text="@string/profile_redaction_email_hint"
-        android:textSize="26sp"
+        android:layout_marginBottom="12dp"
+        android:hint="@string/profile_redaction_email_hint"
+        android:textSize="20sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/etAbout"
+        app:layout_constraintTop_toBottomOf="@id/tvWriteEmail"
         app:layout_constraintBottom_toTopOf="@id/btnEdit"/>
 
     <Button
