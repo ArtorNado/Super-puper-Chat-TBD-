@@ -33,6 +33,10 @@ android {
         jvmTarget = "1.8"
     }
 
+    androidExtensions {
+        experimental = true
+    }
+
     kapt {
         generateStubs = true
     }
