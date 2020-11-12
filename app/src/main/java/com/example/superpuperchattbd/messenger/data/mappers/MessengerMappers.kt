@@ -13,3 +13,14 @@ fun mapDialogEntityToLocal(dialogEntity: DialogEntity): Dialog {
         )
     }
 }
+
+fun mapLocalToDialogEntity(dialog: Dialog): DialogEntity {
+    return with(dialog){
+        DialogEntity(
+            id,
+            senderId,
+            imageUrl,
+            messages
+        )
+    }
+}
