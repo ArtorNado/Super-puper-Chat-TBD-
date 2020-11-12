@@ -17,7 +17,6 @@ class FriendsListFragment : BaseFragment<FriendsListViewModel>() {
     }
 
     override fun initClickListeners() {
-        TODO("Not yet implemented")
     }
 
     override fun setupViews() {
@@ -25,6 +24,5 @@ class FriendsListFragment : BaseFragment<FriendsListViewModel>() {
     }
 
     override fun subscribe() {
-        TODO("Not yet implemented")
     }
 }
