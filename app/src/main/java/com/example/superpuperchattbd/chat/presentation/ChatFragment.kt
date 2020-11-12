@@ -3,7 +3,6 @@ package com.example.superpuperchattbd.chat.presentation
 import android.view.MotionEvent
 import android.view.View
 import android.widget.TextView
-import android.widget.Toast
 import androidx.lifecycle.Observer
 import com.example.superpuperchattbd.R
 import com.example.superpuperchattbd.app.injector.Injector
