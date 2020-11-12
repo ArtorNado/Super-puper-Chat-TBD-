@@ -1,5 +1,6 @@
 package com.example.superpuperchattbd.friends_list.presentation
 
+import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.superpuperchattbd.R
 import com.example.superpuperchattbd.app.injector.Injector
@@ -17,6 +18,7 @@ class FriendsListFragment : BaseFragment<FriendsListViewModel>() {
     }
 
     override fun initClickListeners() {
+        //
     }
 
     override fun setupViews() {
@@ -24,5 +26,12 @@ class FriendsListFragment : BaseFragment<FriendsListViewModel>() {
     }
 
     override fun subscribe() {
+        observe(viewModel.data, Observer { factory ->
+            adapter = FriendsRecyclerAdapter {}
+            rvFriends.adapter = adapter
+            if (factory != null) {
+                adapter!!.submitList(factory)
+            }
+        })
     }
 }

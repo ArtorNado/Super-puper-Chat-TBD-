@@ -10,20 +10,24 @@ import com.example.superpuperchattbd.core_db.model.ProfileEntity
 import kotlinx.android.extensions.LayoutContainer
 import kotlinx.android.synthetic.main.item_friend.*
 
-class FriendsRecyclerViewHolder(override val containerView: View) :
+class FriendsRecyclerViewHolder(
+    override val containerView: View,
+    val click: (ProfileEntity) -> Unit
+) :
     RecyclerView.ViewHolder(containerView), LayoutContainer {
     fun bind(profileEntity: ProfileEntity) {
         Glide.with(itemView.context)
             .load(profileEntity.imageUrl)
             .into(ivFriendProfilePic)
         tvFriendName.text = profileEntity.name
+        containerView.setOnClickListener { click(profileEntity) }
     }
 
     companion object {
-        fun create(parent: ViewGroup) = FriendsRecyclerViewHolder(
+        fun create(parent: ViewGroup, click: (ProfileEntity) -> Unit) = FriendsRecyclerViewHolder(
             LayoutInflater.from(parent.context).inflate(
                 R.layout.item_friend, parent, false
-            )
+            ), click
         )
     }
 }
