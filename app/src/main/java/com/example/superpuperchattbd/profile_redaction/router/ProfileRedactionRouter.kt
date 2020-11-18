@@ -1,3 +1,7 @@
 package com.example.superpuperchattbd.profile_redaction.router
 
-interface ProfileRedactionRouter
+interface ProfileRedactionRouter {
+
+    fun backToProfile()
+
+}
