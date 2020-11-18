@@ -16,12 +16,18 @@ class MessageViewHolder private constructor(
 
     fun bind(message: Message) {
         containerView.apply {
-            tv_data.text = "${message.date.hours}:${message.date.minutes}"
+            tv_data.text = message.date.run {
+                hours.let { if (it < FORMAT_TIME) "0$it:" else "$it:" } +
+                minutes.let { if (it < FORMAT_TIME) "0$it" else "$it" }
+            }
             tv_message.text = message.message
         }
     }
 
     companion object {
+
+        private const val FORMAT_TIME = 10
+
         fun create(parent: ViewGroup, messageType: MessageType) =
             when(messageType) {
                 MessageType.Currant -> MessageViewHolder(

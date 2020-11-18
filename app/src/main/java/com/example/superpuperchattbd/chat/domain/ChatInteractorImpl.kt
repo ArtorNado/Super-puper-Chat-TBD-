@@ -10,7 +10,6 @@ import io.reactivex.Single
 import java.lang.IllegalStateException
 import java.util.*
 import javax.inject.Inject
-import kotlin.collections.ArrayList
 
 class ChatInteractorImpl @Inject constructor(
     private val repository: ChatRepository
@@ -21,7 +20,7 @@ class ChatInteractorImpl @Inject constructor(
 
     override fun sendMessage(dialog: Dialog?, message: String): Single<Dialog> {
         return dialog?.run {
-            val newListMessage = ArrayList<Message>().apply {
+            val newListMessage = mutableListOf<Message>().apply {
                 addAll(messages)
                 add(Message(0, message, Date(), 1))
             }

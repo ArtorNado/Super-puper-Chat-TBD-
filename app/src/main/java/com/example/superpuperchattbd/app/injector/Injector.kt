@@ -7,6 +7,8 @@ import com.example.superpuperchattbd.friends_list.di.FriendsFeatureSubcomponent
 import com.example.superpuperchattbd.friends_list.presentation.FriendsListFragment
 import com.example.superpuperchattbd.chat.di.ChatFeatureSubcomponent
 import com.example.superpuperchattbd.chat.presentation.ChatFragment
+import com.example.superpuperchattbd.main.MainActivity
+import com.example.superpuperchattbd.main.di.MainActivitySubcomponent
 import com.example.superpuperchattbd.messenger.di.MessengerFeatureSubcomponent
 import com.example.superpuperchattbd.messenger.presentation.MessengerFragment
 import com.example.superpuperchattbd.profile.presentation.ProfileFragment
@@ -18,6 +20,7 @@ object Injector {
 
     lateinit var appComponent: AppComponent
 
+    private var mainActivitySubcomponent: MainActivitySubcomponent? = null
     private var friendsFeatureSubcomponent: FriendsFeatureSubcomponent? = null
     private var messengerFeatureSubcomponent: MessengerFeatureSubcomponent? = null
     private var profileRedactionSubcomponent: ProfileRedactionSubcomponent? = null
@@ -29,6 +32,10 @@ object Injector {
             .application(app)
             .build()
     }
+
+    fun plusMainActivitySubcomponent(activity: MainActivity): MainActivitySubcomponent =
+        mainActivitySubcomponent ?: appComponent.provideMainAcitivtySubComponent()
+            .withActivity(activity).build().also { mainActivitySubcomponent = it  }
 
     fun plusFriendsFeatureSubcomponent(fragment: FriendsListFragment): FriendsFeatureSubcomponent =
         friendsFeatureSubcomponent ?: appComponent.provideFriendsFeatureSubcomponent()
@@ -64,6 +71,10 @@ object Injector {
 
     fun clearProfileSubcomponent() {
         profileSubcomponent = null
+    }
+
+    fun clearMainActivitySubcomponent() {
+        mainActivitySubcomponent = null
     }
 
     fun plusChatFeatureSubcomponent(fragment: ChatFragment): ChatFeatureSubcomponent =

@@ -2,43 +2,20 @@ package com.example.superpuperchattbd.core_db.type_converters
 
 import androidx.room.TypeConverter
 import com.example.superpuperchattbd.common_messenger.Message
-import java.lang.StringBuilder
-import java.text.SimpleDateFormat
-import java.util.*
-
-private const val DATA_FORMAT = "dd-MM-yyyy HH:mm"
+import com.google.gson.Gson
+import com.google.gson.reflect.TypeToken
 
 class MessageConverter {
 
     @TypeConverter
     fun fromMessages(messages: List<Message>): String {
-        val formatter = SimpleDateFormat(DATA_FORMAT, Locale.ENGLISH)
-        val messagesString = StringBuilder()
-        messages
-            .map { "${it.userId}, ${it.message}, ${formatter.format(it.date)}, ${it.userId}}" }
-            .forEach { messagesString.append(it) }
-        return messagesString.toString()
+        return Gson().toJson(messages)
     }
 
     @TypeConverter
     fun toMessages(messages: String): List<Message> {
-        val parser =  SimpleDateFormat(DATA_FORMAT, Locale.ENGLISH)
-        return messages.split("\n").map {
-            val fields = it.split(", ")
-            Message(
-                userId = fields[USER_ID_KEY].toInt(),
-                message = fields[MESSAGE_KEY],
-                date = parser.parse(fields[DATE_KEY]) ?: Date(),
-                messageStatus = fields[MESSAGE_STATUS_KEY].toInt())
-        }
+        val type = object : TypeToken<List<Message>>() {}.type
+        val messageList = Gson().fromJson<List<Message>>(messages, type)
+        return messageList ?: listOf()
     }
-
-    companion object {
-
-        private const val USER_ID_KEY = 0
-        private const val MESSAGE_KEY = 1
-        private const val DATE_KEY = 2
-        private const val MESSAGE_STATUS_KEY = 3
-    }
-
 }

@@ -13,4 +13,7 @@ class FriendsRepositoryImpl @Inject constructor(private val db: AppDatabase) : F
 
     override fun createNewDialog(dialogEntity: DialogEntity): Completable =
         db.dialogDao().setDialog(dialogEntity)
+
+    override fun getDialogBySenderId(id: Int): DialogEntity =
+        db.dialogDao().getDialogBySenderId(id)
 }

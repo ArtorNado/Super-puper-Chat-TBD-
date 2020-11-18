@@ -28,4 +28,8 @@ class RouterImpl @Inject constructor(
         navControllerProvider.get()
             ?.navigate(actionId, bundle)
     }
+
+    override fun openFriendsScreen() {
+        navigateTo(R.id.action_global_friendsFragment)
+    }
 }
