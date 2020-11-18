@@ -8,6 +8,7 @@ import com.example.superpuperchattbd.R
 import com.example.superpuperchattbd.app.injector.Injector
 import com.example.superpuperchattbd.common.base.BaseFragment
 import com.example.superpuperchattbd.common_chat.recycler.MessageAdapter
+import com.example.superpuperchattbd.messenger.presentation.MessengerFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.android.synthetic.main.fragment_chat.*
 
@@ -49,14 +50,17 @@ class ChatFragment: BaseFragment<ChatViewModel>() {
 
     override fun subscribe() {
         viewModel.getDialog(
-            arguments?.getInt(ID_ARG) ?: 0
+            arguments?.getInt(MessengerFragment.DIALOG_ID) ?: 0
         )
         observe(viewModel.data, Observer {
             viewModel.getProfile(it.senderId)
             adapter?.submitList(it.messages)
+            if (it.messages.isNotEmpty()) {
+                rv_messages.smoothScrollToPosition(it.messages.lastIndex)
+            }
         })
         observe(viewModel.profile, Observer {
-            activity?.actionBar?.title = it.name
+            activity?.title = it.name
         })
     }
 
@@ -68,6 +72,5 @@ class ChatFragment: BaseFragment<ChatViewModel>() {
 
     companion object {
         private const val DRAWABLE_RIGHT_KEY = 2
-        private const val ID_ARG = "id_arg"
     }
 }

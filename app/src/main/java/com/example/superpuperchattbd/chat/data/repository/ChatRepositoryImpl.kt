@@ -20,11 +20,9 @@ class ChatRepositoryImpl @Inject constructor(
     }
 
     override fun sendMessage(dialog: DialogEntity): Single<Dialog> {
-        return db.dialogDao().sendMessage(dialog).to {
-            db.dialogDao().getDialogById(dialog.id).map {
-                mapDialogEntityToLocal(it)
-            }
-        }
+        return db.dialogDao().sendMessage(dialog)
+            .toSingle { db.dialogDao().getDialogByIdNotSingle(dialog.id) }
+            .map { mapDialogEntityToLocal(it) }
     }
 
     override fun getProfile(id: Int): Single<ProfileEntity> {

@@ -9,7 +9,7 @@
         android:id="@+id/navigation_messenger"
         android:name="com.example.superpuperchattbd.messenger.presentation.MessengerFragment"
         android:label="messenger_fragment"
-        tools:layout="@layout/messenger_fragment" />
+        tools:layout="@layout/messenger_fragment"/>
 
     <fragment
         android:id="@+id/navigation_theme"
@@ -29,6 +29,7 @@
         android:id="@+id/profileFragment"
         android:name="com.example.superpuperchattbd.profile.presentation.ProfileFragment"
         android:label="ProfileFragment" />
+
     <fragment
         android:id="@+id/chatFragment"
         android:name="com.example.superpuperchattbd.chat.presentation.ChatFragment"
@@ -39,8 +40,8 @@
         android:id="@+id/action_global_chatFragment"
         app:destination="@id/chatFragment"
         app:launchSingleTop="false"
-        app:popUpTo="@+id/nav_graph"
-        app:popUpToInclusive="true" />
+        app:popUpTo="@id/navigation_messenger"
+        app:popUpToInclusive="false" />
 
     <fragment
         android:id="@+id/friendsFragment"
@@ -54,6 +55,5 @@
         app:launchSingleTop="false"
         app:popUpTo="@id/nav_graph"
         app:popUpToInclusive="true" />
-
 
 </navigation>

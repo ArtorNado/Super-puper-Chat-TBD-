@@ -15,11 +15,14 @@ class MessengerViewHolder private constructor(
 ) : RecyclerView.ViewHolder(containerView), LayoutContainer {
 
     fun bind(dialog: Dialog) {
-        val lastMessage = dialog.messages.get(dialog.messages.lastIndex)
+        val lastMessage = dialog.messages.run {
+            if (size > 0) get(dialog.messages.lastIndex) else null
+        }
         containerView.apply {
-            tv_userName.text = lastMessage.userId.toString()
-            tv_message.text = lastMessage.message
-            tv_time.text = "${lastMessage.date.hours}:${lastMessage.date.minutes}"
+            tv_userName.text = lastMessage?.userId.toString()
+            tv_message.text = lastMessage?.message
+            tv_time.text = lastMessage?.date.toString()
+            setOnClickListener { onMessageClick(dialog) }
         }
     }
 
