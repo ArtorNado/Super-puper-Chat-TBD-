@@ -1,6 +1,5 @@
 package com.example.superpuperchattbd.messenger.data.repository
 
-import android.util.Log
 import androidx.paging.DataSource
 import com.example.superpuperchattbd.common_messenger.Dialog
 import com.example.superpuperchattbd.common_messenger.Message
@@ -37,7 +36,7 @@ class MessengerRepositoryImpl @Inject constructor(
                 )
             ).subscribe (
                 { observer.onNext(true) },
-                { Log.e(this.javaClass.name, it.message.toString()) }
+                {  }
             )
 
             db.profileDao().createUserData(
@@ -52,7 +51,7 @@ class MessengerRepositoryImpl @Inject constructor(
                     )
             ).subscribe (
                 { observer.onNext(true) },
-                { Log.e(this.javaClass.name, it.message.toString()) }
+                {  }
             )
 
             db.profileDao().createUserData(
@@ -67,7 +66,7 @@ class MessengerRepositoryImpl @Inject constructor(
                     )
             ).subscribe (
                 { observer.onNext(true) },
-                { Log.e(this.javaClass.name, it.message.toString()) }
+                {  }
             )
 
             db.dialogDao().createDialog(
@@ -85,7 +84,7 @@ class MessengerRepositoryImpl @Inject constructor(
                 )
             ).subscribe (
                 { observer.onNext(true) },
-                { Log.e(this.javaClass.name, it.message.toString()) }
+                {  }
             )
 
             db.dialogDao().createDialog(
@@ -103,7 +102,7 @@ class MessengerRepositoryImpl @Inject constructor(
                 )
             ).subscribe (
                 { observer.onNext(true) },
-                { Log.e(this.javaClass.name, it.message.toString()) }
+                { }
             )
         }
     }

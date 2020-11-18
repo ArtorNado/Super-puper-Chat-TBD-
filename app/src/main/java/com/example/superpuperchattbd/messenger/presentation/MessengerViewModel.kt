@@ -29,7 +29,7 @@ class MessengerViewModel (
                 .subscribeOn(Schedulers.io())
                 .subscribe (
                     {  },
-                    { Log.e(this.javaClass.name, it.message.toString()) }
+                    {  }
                 ))
 
         disposables.add(RxPagedListBuilder<Int, Dialog>(
