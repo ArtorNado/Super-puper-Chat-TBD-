@@ -16,6 +16,9 @@ interface DialogDao {
     @Insert(onConflict = OnConflictStrategy.ABORT)
     fun setDialog(dialog: DialogEntity): Completable
 
+    @Insert
+    fun createDialog(dialog: DialogEntity): Completable
+
     @Query("SELECT * FROM ${Table.TABLE_DIALOG} WHERE id=:id")
     fun getDialogById(id: Int): Single<DialogEntity>
 

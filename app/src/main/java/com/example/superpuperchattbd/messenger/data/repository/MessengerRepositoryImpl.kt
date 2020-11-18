@@ -1,6 +1,5 @@
 package com.example.superpuperchattbd.messenger.data.repository
 
-import android.util.Log
 import androidx.paging.DataSource
 import com.example.superpuperchattbd.common_messenger.Dialog
 import com.example.superpuperchattbd.common_messenger.Message
@@ -23,8 +22,9 @@ class MessengerRepositoryImpl @Inject constructor(
     }
 
     override fun createModels(): Observable<Boolean> {
-        return Observable.create<Boolean> {
-            db.profileDao().saveUserData(
+        return Observable.create<Boolean> { observer ->
+
+            db.profileDao().createUserData(
                 ProfileEntity(
                     id = 0,
                     name = "Vadim",
@@ -35,11 +35,11 @@ class MessengerRepositoryImpl @Inject constructor(
                     imageUrl = ""
                 )
             ).subscribe (
-                { it.onNext(true) },
-                { Log.e(this.javaClass.name, it.message.toString()) }
+                { observer.onNext(true) },
+                {  }
             )
 
-            db.profileDao().saveUserData(
+            db.profileDao().createUserData(
                     ProfileEntity(
                         id = 1,
                         name = "Artem",
@@ -50,11 +50,11 @@ class MessengerRepositoryImpl @Inject constructor(
                         imageUrl = ""
                     )
             ).subscribe (
-                { it.onNext(true) },
-                { Log.e(this.javaClass.name, it.message.toString()) }
+                { observer.onNext(true) },
+                {  }
             )
 
-            db.profileDao().saveUserData(
+            db.profileDao().createUserData(
                     ProfileEntity(
                         id = 2,
                         name = "Seriga",
@@ -65,11 +65,11 @@ class MessengerRepositoryImpl @Inject constructor(
                         imageUrl = ""
                     )
             ).subscribe (
-                { it.onNext(true) },
-                { Log.e(this.javaClass.name, it.message.toString()) }
+                { observer.onNext(true) },
+                {  }
             )
 
-            db.dialogDao().setDialog(
+            db.dialogDao().createDialog(
                 DialogEntity(
                     id = 1,
                     senderId = 1,
@@ -83,11 +83,11 @@ class MessengerRepositoryImpl @Inject constructor(
                         ))
                 )
             ).subscribe (
-                { it.onNext(true) },
-                { Log.e(this.javaClass.name, it.message.toString()) }
+                { observer.onNext(true) },
+                {  }
             )
 
-            db.dialogDao().setDialog(
+            db.dialogDao().createDialog(
                 DialogEntity(
                     id = 0,
                     senderId = 2,
@@ -101,8 +101,8 @@ class MessengerRepositoryImpl @Inject constructor(
                         ))
                 )
             ).subscribe (
-                { it.onNext(true) },
-                { Log.e(this.javaClass.name, it.message.toString()) }
+                { observer.onNext(true) },
+                { }
             )
         }
     }
