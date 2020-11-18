@@ -1,6 +1,5 @@
 package com.example.superpuperchattbd.core_db.type_converters
 
-import android.util.Log
 import androidx.room.TypeConverter
 import com.example.superpuperchattbd.common_messenger.Message
 import com.google.gson.Gson

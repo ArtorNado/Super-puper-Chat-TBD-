@@ -4,7 +4,6 @@ import androidx.paging.DataSource
 import com.example.superpuperchattbd.common_messenger.Dialog
 import com.example.superpuperchattbd.common_messenger.domain.MessengerDataSourceInteractor
 import com.example.superpuperchattbd.messenger.data.interfaces.MessengerRepository
-import io.reactivex.Completable
 import io.reactivex.Observable
 import javax.inject.Inject
 
