@@ -22,10 +22,10 @@ class MessageAdapter : ListAdapter<Message, MessageViewHolder>(
     }
 
     override fun getItemViewType(position: Int): Int {
-        if (currentList[position].userId != 1) {
+        if (currentList[position].userId == 0) {
             return 0
         } else {
-            return super.getItemViewType(position)
+            return -1
         }
     }
 }
