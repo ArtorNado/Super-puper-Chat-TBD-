@@ -15,6 +15,9 @@ class RouterImpl @Inject constructor(
         navigateTo(R.id.action_global_chatFragment, args)
     }
 
+    override fun backToProfile() {
+        navigateTo(R.id.actionProfileRedactionToProfile)
+    }
 
     private fun navigateTo(actionId: Int, bundle: Bundle? = null) {
         navControllerProvider.get()
