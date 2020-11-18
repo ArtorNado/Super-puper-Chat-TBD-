@@ -19,7 +19,7 @@ class MessengerViewHolder private constructor(
         containerView.apply {
             tv_userName.text = lastMessage.userId.toString()
             tv_message.text = lastMessage.message
-            tv_time.text = lastMessage.date.toString()
+            tv_time.text = "${lastMessage.date.hours}:${lastMessage.date.minutes}"
         }
     }
 

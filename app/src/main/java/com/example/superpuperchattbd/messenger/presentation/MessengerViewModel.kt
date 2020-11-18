@@ -14,7 +14,7 @@ import io.reactivex.schedulers.Schedulers
 private const val PAGE_SIZE = 10
 
 class MessengerViewModel(
-    interactor: MessengerDataSourceInteractor,
+    private val interactor: MessengerDataSourceInteractor,
     private val router: MessengerRouter
 ) : BaseViewModel() {
 
