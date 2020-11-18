@@ -21,4 +21,8 @@ interface ProfileDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun saveUserData(profileEntity: ProfileEntity): Completable
+
+    @Insert
+    fun createUserData(profileEntity: ProfileEntity): Completable
+
 }
