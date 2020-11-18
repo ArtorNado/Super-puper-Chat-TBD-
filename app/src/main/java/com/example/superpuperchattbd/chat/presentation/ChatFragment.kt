@@ -19,6 +19,8 @@ class ChatFragment: BaseFragment<ChatViewModel>() {
     private var adapter: MessageAdapter? = null
     private var navView: BottomNavigationView? = null
 
+    private var oldTitle: String? = null
+
     override fun inject() {
         Injector.plusChatFeatureSubcomponent(this).inject(this)
     }
@@ -41,6 +43,7 @@ class ChatFragment: BaseFragment<ChatViewModel>() {
     }
 
     override fun setupViews() {
+        oldTitle = activity?.title.toString()
         navView = activity?.findViewById(R.id.nav_view)
         navView?.visibility = View.GONE
 
@@ -67,6 +70,7 @@ class ChatFragment: BaseFragment<ChatViewModel>() {
     override fun onDestroyView() {
         navView?.visibility = View.VISIBLE
         Injector.clearChatFeatureSubcomponent()
+        activity?.title = oldTitle
         super.onDestroyView()
     }
 
