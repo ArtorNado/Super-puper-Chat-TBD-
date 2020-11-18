@@ -16,7 +16,10 @@ class MessageViewHolder private constructor(
 
     fun bind(message: Message) {
         containerView.apply {
-            tv_data.text = "${message.date.hours}:${message.date.minutes}"
+            tv_data.text = message.date.run {
+                hours.let { if (it < 10) "0$it:" else "$it:" } +
+                minutes.let { if (it < 10) "0$it" else "$it" }
+            }
             tv_message.text = message.message
         }
     }
