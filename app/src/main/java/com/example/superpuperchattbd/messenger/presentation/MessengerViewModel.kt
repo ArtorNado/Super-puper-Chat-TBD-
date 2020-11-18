@@ -38,9 +38,10 @@ class MessengerViewModel (
         ).buildObservable()
             .observeOn(AndroidSchedulers.mainThread())
             .subscribeOn(Schedulers.io())
-            .subscribe ({ _data.value = it
-                Log.e(this.javaClass.name, it.toString()) },
-                { Log.e(this.javaClass.name, it.message.toString()) }))
+            .subscribe (
+                { _data.value = it },
+                { Log.e(this.javaClass.name, it.message.toString()) }
+            ))
     }
 
     fun openChat(dialogId: Int) {
