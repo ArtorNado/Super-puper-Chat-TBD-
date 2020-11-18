@@ -1,9 +1,6 @@
 package com.example.superpuperchattbd.profile.presentation
 
-import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.util.Log
 import androidx.lifecycle.Observer
 import com.bumptech.glide.Glide
 import com.example.superpuperchattbd.R
@@ -15,25 +12,13 @@ class ProfileFragment : BaseFragment<ProfileViewModel>() {
 
     override val layoutId: Int = R.layout.fragment_profile
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-    }
-
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        return inflater.inflate(R.layout.fragment_profile, container, false)
-    }
-
-
     override fun inject() {
         Injector.plusProfileSubcomponent(this).inject(this)
     }
 
     override fun initClickListeners() {
         btn_edit_profile.setOnClickListener{
+            Log.e("init btn listener", "Iniiit")
             viewModel.editProfile()
         }
     }
