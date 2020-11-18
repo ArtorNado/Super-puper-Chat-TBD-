@@ -18,6 +18,10 @@ class RouterImpl @Inject constructor(
     override fun backToProfile() {
         navigateTo(R.id.actionProfileRedactionToProfile)
     }
+    override fun editProfile() {
+        navigateTo(R.id.actionProfileToProfileRedaction)
+    }
+
 
     private fun navigateTo(actionId: Int, bundle: Bundle? = null) {
         navControllerProvider.get()
