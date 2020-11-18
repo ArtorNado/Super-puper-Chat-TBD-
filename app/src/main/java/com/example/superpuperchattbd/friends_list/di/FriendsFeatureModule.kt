@@ -4,6 +4,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.example.superpuperchattbd.common.di.viewModel.ViewModelKey
+import com.example.superpuperchattbd.common.router.Router
 import com.example.superpuperchattbd.friends_list.data.FriendsInteractor
 import com.example.superpuperchattbd.friends_list.data.FriendsRepository
 import com.example.superpuperchattbd.friends_list.data.FriendsRepositoryImpl
@@ -19,8 +20,8 @@ class FriendsFeatureModule {
     @Provides
     @IntoMap
     @ViewModelKey(FriendsListViewModel::class)
-    fun provideViewModel(interactor: FriendsInteractor): ViewModel {
-        return FriendsListViewModel(interactor)
+    fun provideViewModel(interactor: FriendsInteractor, router: Router): ViewModel {
+        return FriendsListViewModel(interactor, router)
     }
 
     @FriendsScope

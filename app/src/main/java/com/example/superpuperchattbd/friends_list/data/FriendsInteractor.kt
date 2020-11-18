@@ -14,4 +14,8 @@ class FriendsInteractor @Inject constructor(
 
     override fun createNewDialog(dialogEntity: DialogEntity) =
         repository.createNewDialog(dialogEntity)
+
+    override fun getDialogBySenderId(id: Int): DialogEntity =
+        repository.getDialogBySenderId(id)
+
 }

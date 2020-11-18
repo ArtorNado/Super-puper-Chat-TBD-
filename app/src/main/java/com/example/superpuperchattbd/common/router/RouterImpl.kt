@@ -15,9 +15,12 @@ class RouterImpl @Inject constructor(
         navigateTo(R.id.action_global_chatFragment, args)
     }
 
-
     private fun navigateTo(actionId: Int, bundle: Bundle? = null) {
         navControllerProvider.get()
             ?.navigate(actionId, bundle)
+    }
+
+    override fun openFriendsScreen() {
+        navigateTo(R.id.action_global_friendsFragment)
     }
 }
