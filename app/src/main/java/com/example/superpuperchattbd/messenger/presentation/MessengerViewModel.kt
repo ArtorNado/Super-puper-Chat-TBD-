@@ -15,7 +15,7 @@ private const val PAGE_SIZE = 10
 
 class MessengerViewModel(
     interactor: MessengerDataSourceInteractor,
-    router: MessengerRouter
+    private val router: MessengerRouter
 ) : BaseViewModel() {
 
     private val _data = MutableLiveData<PagedList<Dialog>>()
@@ -29,5 +29,9 @@ class MessengerViewModel(
             .observeOn(AndroidSchedulers.mainThread())
             .subscribeOn(Schedulers.io())
             .subscribe { _data.value = it })
+    }
+
+    fun openChat(dialogId: Int){
+        router.openChat(dialogId)
     }
 }

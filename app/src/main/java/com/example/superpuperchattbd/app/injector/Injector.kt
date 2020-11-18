@@ -3,6 +3,8 @@ package com.example.superpuperchattbd.app.injector
 import com.example.superpuperchattbd.app.App
 import com.example.superpuperchattbd.app.di.AppComponent
 import com.example.superpuperchattbd.app.di.DaggerAppComponent
+import com.example.superpuperchattbd.friends_list.di.FriendsFeatureSubcomponent
+import com.example.superpuperchattbd.friends_list.presentation.FriendsListFragment
 import com.example.superpuperchattbd.chat.di.ChatFeatureSubcomponent
 import com.example.superpuperchattbd.chat.presentation.ChatFragment
 import com.example.superpuperchattbd.messenger.di.MessengerFeatureSubcomponent
@@ -16,6 +18,7 @@ object Injector {
 
     lateinit var appComponent: AppComponent
 
+    private var friendsFeatureSubcomponent: FriendsFeatureSubcomponent? = null
     private var messengerFeatureSubcomponent: MessengerFeatureSubcomponent? = null
     private var profileRedactionSubcomponent: ProfileRedactionSubcomponent? = null
     private var profileSubcomponent: ProfileSubcomponent? = null
@@ -27,6 +30,10 @@ object Injector {
             .build()
     }
 
+    fun plusFriendsFeatureSubcomponent(fragment: FriendsListFragment): FriendsFeatureSubcomponent =
+        friendsFeatureSubcomponent ?: appComponent.provideFriendsFeatureSubcomponent()
+            .withFragment(fragment).build().also { friendsFeatureSubcomponent = it }
+
     fun plusMessengerFeatureSubcomponent(fragment: MessengerFragment): MessengerFeatureSubcomponent =
         messengerFeatureSubcomponent
             ?: appComponent.provideMessengerFeatureSubcomponent().withFragment(fragment)
@@ -35,7 +42,8 @@ object Injector {
                 }
 
     fun plusProfileRedactionSubcomponent(fragment: ProfileRedactionFragment): ProfileRedactionSubcomponent =
-        profileRedactionSubcomponent ?: appComponent.provideProfileRedactionSubcomponent().withFragment(fragment)
+        profileRedactionSubcomponent ?: appComponent.provideProfileRedactionSubcomponent()
+            .withFragment(fragment)
             .build().also {
                 profileRedactionSubcomponent = it
             }

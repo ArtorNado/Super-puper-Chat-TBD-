@@ -1,10 +1,7 @@
 package com.example.superpuperchattbd.core_db.dao
 
 import androidx.paging.DataSource
-import androidx.room.Dao
-import androidx.room.Insert
-import androidx.room.OnConflictStrategy
-import androidx.room.Query
+import androidx.room.*
 import com.example.superpuperchattbd.core_db.constants.Table
 import com.example.superpuperchattbd.core_db.model.DialogEntity
 import io.reactivex.Completable
@@ -16,9 +13,12 @@ interface DialogDao {
     @Query("SELECT * FROM ${Table.TABLE_DIALOG}")
     fun getDialogs(): DataSource.Factory<Int, DialogEntity>
 
-    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    @Insert(onConflict = OnConflictStrategy.ABORT)
     fun setDialog(dialog: DialogEntity): Completable
 
     @Query("SELECT * FROM ${Table.TABLE_DIALOG} WHERE id=:id")
     fun getDialogById(id: Int): Single<DialogEntity>
+
+    @Update
+    fun sendMessage(dialog: DialogEntity): Completable
 }

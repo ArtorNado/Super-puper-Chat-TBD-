@@ -10,6 +10,10 @@ import kotlinx.android.synthetic.main.messenger_fragment.*
 
 class MessengerFragment : BaseFragment<MessengerViewModel>() {
 
+    companion object {
+        const val DIALOG_ID = "dialog_id"
+    }
+
     override val layoutId: Int = R.layout.messenger_fragment
 
     private var adapter: MessengerAdapter? = null
@@ -28,7 +32,7 @@ class MessengerFragment : BaseFragment<MessengerViewModel>() {
 
     override fun subscribe() {
         observe(viewModel.data, Observer { factory ->
-            adapter = MessengerAdapter { }
+            adapter = MessengerAdapter { viewModel.openChat(it.id)}
             tv_test.adapter = adapter
             if (factory != null) {
                 adapter!!.submitList(factory)
