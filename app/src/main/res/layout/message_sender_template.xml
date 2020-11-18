@@ -15,21 +15,32 @@
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@android:mipmap/sym_def_app_icon" />
 
-    <TextView
-        android:id="@+id/tv_message"
-        android:layout_width="wrap_content"
+    <RelativeLayout
+        android:id="@+id/rl_for_tv"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_margin="8dp"
-        android:background="@drawable/message_sender"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="14dp"
+        android:layout_marginBottom="8dp"
         android:gravity="start"
-        android:padding="16dp"
-        android:text="Привет, меня зовут вадим"
-        android:textColor="@android:color/black"
         app:layout_constraintHorizontal_bias="0"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/tv_data"
         app:layout_constraintStart_toEndOf="@id/iv_ava"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/tv_message"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/message"
+            android:padding="16dp"
+            android:text="Привет, меня зовут вадим"
+            android:textAlignment="textStart"
+            android:textColor="@android:color/black" />
+
+    </RelativeLayout>
 
     <TextView
         android:id="@+id/tv_data"
