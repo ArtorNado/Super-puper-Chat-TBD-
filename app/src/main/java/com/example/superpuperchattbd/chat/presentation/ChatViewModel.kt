@@ -28,7 +28,7 @@ class ChatViewModel @Inject constructor(
             .subscribeOn(Schedulers.io())
             .subscribe (
                 { _data.value = it },
-                { Log.e(this@ChatViewModel.javaClass.name, it.message.toString()) }
+                { Log.e(this@ChatViewModel.javaClass.name + " getDialog", it.message.toString()) }
             ))
     }
 
@@ -39,7 +39,7 @@ class ChatViewModel @Inject constructor(
                 .subscribeOn(Schedulers.io())
                 .subscribe (
                     { _data.value = it },
-                    { Log.e(this@ChatViewModel.javaClass.name, it.message.toString()) }
+                    { Log.e(this@ChatViewModel.javaClass.name + " sendMessage", it.message.toString()) }
                 ))
     }
 
@@ -50,7 +50,7 @@ class ChatViewModel @Inject constructor(
                 .subscribeOn(Schedulers.io())
                 .subscribe (
                     { _profile.value = it },
-                    { Log.e(this@ChatViewModel.javaClass.name, it.message.toString()) }
+                    { Log.e(this@ChatViewModel.javaClass.name + " getProfile", it.message.toString()) }
                 ))
     }
 

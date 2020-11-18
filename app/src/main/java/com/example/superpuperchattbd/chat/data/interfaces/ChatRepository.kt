@@ -12,4 +12,5 @@ interface ChatRepository {
     fun sendMessage(dialog: DialogEntity): Single<Dialog>
 
     fun getProfile(id: Int): Single<ProfileEntity>
+
 }

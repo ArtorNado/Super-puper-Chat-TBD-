@@ -8,7 +8,7 @@ interface ChatInteractor {
 
     fun getData(id: Int): Single<Dialog>
 
-    fun sendMessage(dialog: Dialog?, message: String): Single<Dialog>
-
     fun getProfile(id: Int): Single<ProfileEntity>
+
+    fun sendMessage(dialog: Dialog?, message: String): Single<Dialog>
 }
