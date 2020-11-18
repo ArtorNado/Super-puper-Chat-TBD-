@@ -4,6 +4,8 @@ import androidx.paging.DataSource
 import com.example.superpuperchattbd.common_messenger.Dialog
 import com.example.superpuperchattbd.common_messenger.domain.MessengerDataSourceInteractor
 import com.example.superpuperchattbd.messenger.data.interfaces.MessengerRepository
+import io.reactivex.Completable
+import io.reactivex.Observable
 import javax.inject.Inject
 
 class MessengerInteractor @Inject constructor(
@@ -14,4 +16,7 @@ class MessengerInteractor @Inject constructor(
         return messengerRepository.getData()
     }
 
+    override fun createModels(): Observable<Boolean> {
+        return messengerRepository.createModels()
+    }
 }

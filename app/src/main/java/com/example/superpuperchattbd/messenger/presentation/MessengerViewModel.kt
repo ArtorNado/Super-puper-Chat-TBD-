@@ -1,5 +1,6 @@
 package com.example.superpuperchattbd.messenger.presentation
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.paging.PagedList
@@ -13,8 +14,8 @@ import io.reactivex.schedulers.Schedulers
 
 private const val PAGE_SIZE = 10
 
-class MessengerViewModel(
-    interactor: MessengerDataSourceInteractor,
+class MessengerViewModel (
+    private val interactor: MessengerDataSourceInteractor,
     private val router: MessengerRouter
 ) : BaseViewModel() {
 
@@ -22,16 +23,27 @@ class MessengerViewModel(
     var data: LiveData<PagedList<Dialog>> = _data
 
     init {
+        disposables.add(
+            interactor.createModels()
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeOn(Schedulers.io())
+                .subscribe (
+                    {  },
+                    { Log.e(this.javaClass.name, it.message.toString()) }
+                ))
+
         disposables.add(RxPagedListBuilder<Int, Dialog>(
             interactor.getData(),
             PAGE_SIZE
         ).buildObservable()
             .observeOn(AndroidSchedulers.mainThread())
             .subscribeOn(Schedulers.io())
-            .subscribe { _data.value = it })
+            .subscribe ({ _data.value = it
+                Log.e(this.javaClass.name, it.toString()) },
+                { Log.e(this.javaClass.name, it.message.toString()) }))
     }
 
-    fun openChat(dialogId: Int){
+    fun openChat(dialogId: Int) {
         router.openChat(dialogId)
     }
 }

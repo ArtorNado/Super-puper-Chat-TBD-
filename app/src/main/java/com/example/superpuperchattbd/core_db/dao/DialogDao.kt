@@ -19,6 +19,9 @@ interface DialogDao {
     @Query("SELECT * FROM ${Table.TABLE_DIALOG} WHERE id=:id")
     fun getDialogById(id: Int): Single<DialogEntity>
 
+    @Query("SELECT * FROM ${Table.TABLE_DIALOG} WHERE id=:id")
+    fun getDialogByIdNotSingle(id: Int): DialogEntity
+
     @Update
     fun sendMessage(dialog: DialogEntity): Completable
 }
