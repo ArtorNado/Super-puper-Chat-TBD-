@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.util.Log
 import androidx.core.os.bundleOf
 import com.example.superpuperchattbd.R
+import com.example.superpuperchattbd.chat.presentation.ChatFragment
 import com.example.superpuperchattbd.messenger.presentation.MessengerFragment
 import javax.inject.Inject
 
@@ -12,8 +13,10 @@ class RouterImpl @Inject constructor(
 ) : Router {
 
     override fun openChat(dialogId: Int) {
-        val args = bundleOf(MessengerFragment.DIALOG_ID to dialogId)
-        navigateTo(R.id.action_global_chatFragment, args)
+        if (ChatFragment.FEATURE_FLAG) {
+            val args = bundleOf(MessengerFragment.DIALOG_ID to dialogId)
+            navigateTo(R.id.action_global_chatFragment, args)
+        }
     }
 
     override fun backToProfile() {
