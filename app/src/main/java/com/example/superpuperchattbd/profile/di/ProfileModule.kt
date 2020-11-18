@@ -4,6 +4,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.example.superpuperchattbd.common.di.viewModel.ViewModelKey
+import com.example.superpuperchattbd.common.router.RouterImpl
 import com.example.superpuperchattbd.profile.data.ProfileRepository
 import com.example.superpuperchattbd.profile.data.ProfileRepositoryImpl
 import com.example.superpuperchattbd.profile.di.scope.ProfileScope
@@ -20,10 +21,8 @@ class ProfileModule {
     @Provides
     @IntoMap
     @ViewModelKey(ProfileViewModel::class)
-    fun provideViewModel(interactor: ProfileInteractorImpl): ViewModel {
-        return ProfileViewModel(
-            interactor
-        )
+    fun provideViewModel(interactor: ProfileInteractorImpl, router: RouterImpl): ViewModel {
+        return ProfileViewModel(interactor, router)
     }
 
     @ProfileScope

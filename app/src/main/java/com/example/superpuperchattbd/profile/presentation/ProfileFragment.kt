@@ -34,7 +34,7 @@ class ProfileFragment : BaseFragment<ProfileViewModel>() {
 
     override fun initClickListeners() {
         btn_edit_profile.setOnClickListener{
-
+            viewModel.editProfile()
         }
     }
 
