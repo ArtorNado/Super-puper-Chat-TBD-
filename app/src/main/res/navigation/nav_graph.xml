@@ -19,11 +19,11 @@
         android:id="@+id/profileRedactionFragment"
         android:name="com.example.superpuperchattbd.profile_redaction.presentation.ProfileRedactionFragment"
         android:label="fragment_profile_redaction"
-        tools:layout="@layout/fragment_profile_redaction"
-        >
-        <action android:id="@+id/actionProfileRedactionToProfile"
+        tools:layout="@layout/fragment_profile_redaction">
+        <action
+            android:id="@+id/actionProfileRedactionToProfile"
             app:destination="@id/profileFragment"
-            app:popUpTo="@id/profileFragment"/>
+            app:popUpTo="@id/profileFragment" />
     </fragment>
     <fragment
         android:id="@+id/profileFragment"
@@ -41,6 +41,19 @@
         app:destination="@id/chatFragment"
         app:launchSingleTop="true"
         app:popUpTo="@+id/nav_graph"
+        app:popUpToInclusive="true" />
+
+    <fragment
+        android:id="@+id/friendsFragment"
+        android:name="com.example.superpuperchattbd.friends_list.presentation.FriendsListFragment"
+        android:label="fragment_friends"
+        tools:layout="@layout/fragment_friends_list" />
+
+    <action
+        android:id="@+id/action_global_friendsFragment"
+        app:destination="@id/friendsFragment"
+        app:launchSingleTop="false"
+        app:popUpTo="@id/nav_graph"
         app:popUpToInclusive="true" />
 
 </navigation>

@@ -9,4 +9,6 @@ interface FriendsRepository {
     fun getData(): DataSource.Factory<Int, ProfileEntity>
 
     fun createNewDialog(dialogEntity: DialogEntity): Completable
+
+    fun getDialogBySenderId(id: Int): DialogEntity
 }
