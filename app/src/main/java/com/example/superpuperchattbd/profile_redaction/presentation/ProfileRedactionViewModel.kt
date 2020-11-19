@@ -55,7 +55,6 @@ class ProfileRedactionViewModel(
     }
 
     fun navigateToProfile() {
-
+        router.backToProfile()
     }
-
 }

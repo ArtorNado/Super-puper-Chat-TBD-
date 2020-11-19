@@ -77,4 +77,8 @@ class ProfileRedactionFragment : BaseFragment<ProfileRedactionViewModel>() {
         Injector.clearProfileRedactionSubcomponent()
         super.onDestroy()
     }
+
+    companion object {
+        const val PROFILE_REDACTION_FLAG = true
+    }
 }
