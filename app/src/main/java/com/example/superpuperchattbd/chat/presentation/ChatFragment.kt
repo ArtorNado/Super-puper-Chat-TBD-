@@ -1,5 +1,6 @@
 package com.example.superpuperchattbd.chat.presentation
 
+import android.util.Log
 import android.view.MotionEvent
 import android.view.View
 import android.widget.TextView
@@ -32,9 +33,9 @@ class ChatFragment: BaseFragment<ChatViewModel>() {
                     right - compoundDrawables[DRAWABLE_RIGHT_KEY].bounds.width()
                 }
                 if (event.rawX >= position) {
-                    val textView = view as TextView
-                    viewModel.sendMessage(textView.text.toString())
-                    textView.text = ""
+                    val text = view as TextView
+                    viewModel.sendMessage(text.text.toString())
+                    text.text = ""
                     view.performClick()
                 }
             }
@@ -56,14 +57,12 @@ class ChatFragment: BaseFragment<ChatViewModel>() {
             arguments?.getInt(MessengerFragment.DIALOG_ID) ?: 0
         )
         observe(viewModel.data, Observer {
-            viewModel.getProfile(it.senderId)
+            Log.e("title", it.senderName ?: "null")
+            activity?.title = it.senderName
             adapter?.submitList(it.messages)
             if (it.messages.isNotEmpty()) {
                 rv_messages.smoothScrollToPosition(it.messages.lastIndex)
             }
-        })
-        observe(viewModel.profile, Observer {
-            activity?.title = it.name
         })
     }
 
