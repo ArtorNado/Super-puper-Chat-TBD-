@@ -28,6 +28,11 @@ class ProfileFragment : BaseFragment<ProfileViewModel>() {
 
     override fun subscribe() {
         viewModel.data.observe(viewLifecycleOwner, Observer {
+            tv_name_profile.text = it.name
+            tv_status_profile.text = it.status
+            tv_about_profile.text = it.about
+            tv_email_profile.text = it.email
+            tv_age_profile.text = it.age.toString()
             Glide.with(this).load(it.imageUrl).into(iv_profile)
         })
     }
