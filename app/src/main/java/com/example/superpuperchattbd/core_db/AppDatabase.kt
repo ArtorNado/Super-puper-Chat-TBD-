@@ -9,7 +9,7 @@ import com.example.superpuperchattbd.core_db.model.ProfileEntity
 
 @Database(
     entities = [DialogEntity::class, ProfileEntity::class],
-    version = 4,
+    version = 5,
     exportSchema = false
 )
 abstract class AppDatabase : RoomDatabase() {

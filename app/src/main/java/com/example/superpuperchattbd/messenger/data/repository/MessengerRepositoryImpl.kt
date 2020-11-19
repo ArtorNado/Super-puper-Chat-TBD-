@@ -1,5 +1,6 @@
 package com.example.superpuperchattbd.messenger.data.repository
 
+import android.util.Log
 import androidx.paging.DataSource
 import com.example.superpuperchattbd.common_messenger.Dialog
 import com.example.superpuperchattbd.common_messenger.Message
@@ -27,31 +28,31 @@ class MessengerRepositoryImpl @Inject constructor(
             db.profileDao().createUserData(
                 ProfileEntity(
                     id = 0,
-                    name = "Vadim",
+                    name = "Vadem",
                     age = 20,
                     email = "qewrt@mail.ru",
-                    about = "Hi, my name is vadim",
-                    status = "Hi, my name is vadim",
+                    about = "Hi, my name is Vadem",
+                    status = "Hi, my name is Vadem",
                     imageUrl = ""
                 )
             ).subscribe (
                 { observer.onNext(true) },
-                {  }
+                { Log.e(this.javaClass.name, it.message.toString()) }
             )
 
             db.profileDao().createUserData(
                     ProfileEntity(
                         id = 1,
-                        name = "Artem",
+                        name = "Ortem",
                         age = 20,
                         email = "qreqwe@mail.ru",
-                        about = "Hi, my name is artem",
-                        status = "Hi, my name is artem",
+                        about = "Hi, my name is Ortem",
+                        status = "Hi, my name is Ortem",
                         imageUrl = ""
                     )
             ).subscribe (
                 { observer.onNext(true) },
-                {  }
+                { Log.e(this.javaClass.name, it.message.toString()) }
             )
 
             db.profileDao().createUserData(
@@ -60,49 +61,96 @@ class MessengerRepositoryImpl @Inject constructor(
                         name = "Seriga",
                         age = 20,
                         email = "qreqwe123@mail.ru",
-                        about = "Hi, my name is seriga",
-                        status = "Hi, my name is seriga",
+                        about = "Hi, my name is Seriga",
+                        status = "Hi, my name is Seriga",
                         imageUrl = ""
                     )
             ).subscribe (
                 { observer.onNext(true) },
-                {  }
+                { Log.e(this.javaClass.name, it.message.toString()) }
+            )
+
+            db.profileDao().createUserData(
+                    ProfileEntity(
+                        id = 3,
+                        name = "Dina",
+                        age = 20,
+                        email = "qreqwe123@mail.ru",
+                        about = "Hi, my name is Dina",
+                        status = "Hi, my name is Dina",
+                        imageUrl = ""
+                    )
+            ).subscribe (
+                { observer.onNext(true) },
+                { Log.e(this.javaClass.name, it.message.toString()) }
+            )
+
+            db.profileDao().createUserData(
+                    ProfileEntity(
+                        id = 4,
+                        name = "Nastia",
+                        age = 20,
+                        email = "qreqwe123@mail.ru",
+                        about = "Hi, my name is Nastia",
+                        status = "Hi, my name is Nastia",
+                        imageUrl = ""
+                    )
+            ).subscribe (
+                { observer.onNext(true) },
+                { Log.e(this.javaClass.name, it.message.toString()) }
+            )
+
+            db.profileDao().createUserData(
+                    ProfileEntity(
+                        id = 5,
+                        name = "Emil",
+                        age = 20,
+                        email = "qreqwe123@mail.ru",
+                        about = "Hi, my name is Emil",
+                        status = "Hi, my name is Emil",
+                        imageUrl = ""
+                    )
+            ).subscribe (
+                { observer.onNext(true) },
+                { Log.e(this.javaClass.name, it.message.toString()) }
             )
 
             db.dialogDao().createDialog(
                 DialogEntity(
                     id = 1,
                     senderId = 1,
+                    senderName = "Ortem",
                     imageUrl = "",
                     messages = listOf(
                         Message(
                             userId = 1,
                             messageStatus = 0,
-                            message = "Hi, my name vadim",
+                            message = "Hi, my name Ortem",
                             date = Date()
                         ))
                 )
             ).subscribe (
                 { observer.onNext(true) },
-                {  }
+                { Log.e(this.javaClass.name, it.message.toString()) }
             )
 
             db.dialogDao().createDialog(
                 DialogEntity(
                     id = 0,
                     senderId = 2,
+                    senderName = "Seriga",
                     imageUrl = "",
                     messages = listOf(
                         Message(
                             userId = 2,
                             messageStatus = 0,
-                            message = "Hi, my name artem",
+                            message = "Hi, my name Seriga",
                             date = Date()
                         ))
                 )
             ).subscribe (
                 { observer.onNext(true) },
-                { }
+                { Log.e(this.javaClass.name, it.message.toString()) }
             )
         }
     }

@@ -4,7 +4,6 @@ import com.example.superpuperchattbd.chat.data.interfaces.ChatRepository
 import com.example.superpuperchattbd.common_chat.domain.ChatInteractor
 import com.example.superpuperchattbd.common_messenger.Dialog
 import com.example.superpuperchattbd.common_messenger.Message
-import com.example.superpuperchattbd.core_db.model.ProfileEntity
 import com.example.superpuperchattbd.messenger.data.mappers.mapLocalToDialogEntity
 import io.reactivex.Single
 import java.lang.IllegalStateException
@@ -30,7 +29,4 @@ class ChatInteractorImpl @Inject constructor(
         } ?: Single.error(IllegalStateException("Dialog is null"))
     }
 
-    override fun getProfile(id: Int): Single<ProfileEntity> {
-        return repository.getProfile(id)
-    }
 }

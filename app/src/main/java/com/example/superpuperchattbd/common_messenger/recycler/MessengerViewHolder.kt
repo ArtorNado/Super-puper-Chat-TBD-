@@ -17,7 +17,7 @@ class MessengerViewHolder private constructor(
     fun bind(dialog: Dialog) {
         val lastMessage = dialog.messages.last()
         containerView.apply {
-            tv_userName.text = lastMessage.userId.toString()
+            tv_userName.text = dialog.senderName
             tv_message.text = lastMessage.message
             tv_time.text = "${lastMessage.date.hours}:${lastMessage.date.minutes}"
             setOnClickListener { onMessageClick(dialog) }
