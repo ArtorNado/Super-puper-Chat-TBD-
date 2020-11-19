@@ -1,16 +1,20 @@
 package com.example.superpuperchattbd.profile.presentation
 
 import android.util.Log
+import android.view.View
 import androidx.lifecycle.Observer
 import com.bumptech.glide.Glide
 import com.example.superpuperchattbd.R
 import com.example.superpuperchattbd.app.injector.Injector
+import com.example.superpuperchattbd.chat.presentation.ChatFragment
 import com.example.superpuperchattbd.common.base.BaseFragment
 import kotlinx.android.synthetic.main.fragment_profile.*
 
 class ProfileFragment : BaseFragment<ProfileViewModel>() {
 
     override val layoutId: Int = R.layout.fragment_profile
+
+    private var userId: Int = 0
 
     override fun inject() {
         Injector.plusProfileSubcomponent(this).inject(this)
@@ -24,9 +28,12 @@ class ProfileFragment : BaseFragment<ProfileViewModel>() {
     }
 
     override fun setupViews() {
+        userId = arguments?.getInt(ChatFragment.PROFILE_ID) ?: 0
+        btn_edit_profile.visibility = if (userId == 0) View.VISIBLE else View.INVISIBLE
     }
 
     override fun subscribe() {
+        viewModel.getUser(userId)
         viewModel.data.observe(viewLifecycleOwner, Observer {
             tv_name_profile.text = it.name
             tv_status_profile.text = it.status

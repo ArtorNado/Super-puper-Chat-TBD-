@@ -27,7 +27,10 @@ class RouterImpl @Inject constructor(
         navigateTo(R.id.action_navigation_profile_to_profileRedactionFragment)
     }
 
-    override fun openProfile(id: Int) { }
+    override fun openProfile(id: Int) {
+        val args = bundleOf(ChatFragment.PROFILE_ID to id)
+        navigateTo(R.id.action_chat_to_profile, args)
+    }
 
     private fun navigateTo(actionId: Int, bundle: Bundle? = null) {
         navControllerProvider.get()
