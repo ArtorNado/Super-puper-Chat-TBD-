@@ -36,4 +36,8 @@ class ProfileFragment : BaseFragment<ProfileViewModel>() {
             Glide.with(this).load(it.imageUrl).into(iv_profile)
         })
     }
+
+    companion object {
+        const val PROFILE_FLAG = true
+    }
 }
