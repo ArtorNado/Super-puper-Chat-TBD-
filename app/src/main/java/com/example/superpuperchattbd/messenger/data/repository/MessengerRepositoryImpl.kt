@@ -73,6 +73,7 @@ class MessengerRepositoryImpl @Inject constructor(
                 DialogEntity(
                     id = 1,
                     senderId = 1,
+                    senderName = "Test11",
                     imageUrl = "",
                     messages = listOf(
                         Message(
@@ -91,6 +92,7 @@ class MessengerRepositoryImpl @Inject constructor(
                 DialogEntity(
                     id = 0,
                     senderId = 2,
+                    senderName = "Test22",
                     imageUrl = "",
                     messages = listOf(
                         Message(

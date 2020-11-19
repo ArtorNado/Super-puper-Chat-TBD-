@@ -34,7 +34,7 @@ class FriendsListViewModel(
     }
 
     fun friendChosen(friend: ProfileEntity) {
-        interactor.createNewDialog(DialogEntity(0, friend.id, friend.imageUrl, emptyList()))
+        interactor.createNewDialog(DialogEntity(0, friend.id, "Test", friend.imageUrl, emptyList()))
         val dialog = interactor.getDialogBySenderId(friend.id)
 
         router.openChat(dialog.id)

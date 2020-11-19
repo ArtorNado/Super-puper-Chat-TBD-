@@ -9,6 +9,7 @@ fun mapDialogEntityToLocal(dialogEntity: DialogEntity): Dialog {
             id,
             senderId,
             imageUrl,
+            senderName,
             messages
         )
     }
@@ -19,6 +20,7 @@ fun mapLocalToDialogEntity(dialog: Dialog): DialogEntity {
         DialogEntity(
             id,
             senderId,
+            senderName!!,
             imageUrl,
             messages
         )

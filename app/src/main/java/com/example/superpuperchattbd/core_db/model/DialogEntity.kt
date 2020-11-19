@@ -18,6 +18,7 @@ data class DialogEntity(
     val id: Int,
     @ColumnInfo(name = "sender_id", index = true)
     val senderId: Int,
+    val senderName: String,
     val imageUrl: String,
     val messages: List<Message>
 )
