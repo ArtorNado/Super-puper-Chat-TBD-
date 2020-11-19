@@ -23,7 +23,7 @@ class MessengerFragment : BaseFragment<MessengerViewModel>() {
     }
 
     override fun initClickListeners() {
-        //
+        fabAddChat.setOnClickListener { viewModel.onFabPressed() }
     }
 
     override fun setupViews() {

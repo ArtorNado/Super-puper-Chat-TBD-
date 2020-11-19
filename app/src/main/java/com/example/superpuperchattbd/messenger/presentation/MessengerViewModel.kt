@@ -38,10 +38,14 @@ class MessengerViewModel (
         ).buildObservable()
             .observeOn(AndroidSchedulers.mainThread())
             .subscribeOn(Schedulers.io())
-            .subscribe (
+            .subscribe(
                 { _data.value = it },
                 { Log.e(this.javaClass.name, it.message.toString()) }
             ))
+    }
+
+    fun onFabPressed() {
+        router.openFriendsScreen()
     }
 
     fun openChat(dialogId: Int) {
