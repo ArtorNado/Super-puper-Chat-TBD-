@@ -73,7 +73,6 @@ class ChatFragment: BaseFragment<ChatViewModel>() {
 
     companion object {
         private const val DRAWABLE_RIGHT_KEY = 2
-        const val FEATURE_FLAG = true
         const val PROFILE_ID = "profile_id"
     }
 }
