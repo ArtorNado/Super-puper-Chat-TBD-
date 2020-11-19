@@ -4,7 +4,6 @@ import com.example.superpuperchattbd.chat.data.interfaces.ChatRepository
 import com.example.superpuperchattbd.common_messenger.Dialog
 import com.example.superpuperchattbd.core_db.AppDatabase
 import com.example.superpuperchattbd.core_db.model.DialogEntity
-import com.example.superpuperchattbd.core_db.model.ProfileEntity
 import com.example.superpuperchattbd.messenger.data.mappers.mapDialogEntityToLocal
 import io.reactivex.Single
 import javax.inject.Inject
@@ -23,10 +22,6 @@ class ChatRepositoryImpl @Inject constructor(
         return db.dialogDao().sendMessage(dialog)
             .toSingle { db.dialogDao().getDialogByIdNotSingle(dialog.id) }
             .map { mapDialogEntityToLocal(it) }
-    }
-
-    override fun getProfile(id: Int): Single<ProfileEntity> {
-        return db.profileDao().getProfile(id)
     }
 
 }
