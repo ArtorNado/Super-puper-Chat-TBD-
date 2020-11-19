@@ -36,11 +36,15 @@ class ProfileFragment : BaseFragment<ProfileViewModel>() {
         viewModel.getUser(userId)
         viewModel.data.observe(viewLifecycleOwner, Observer {
             tv_name_profile.text = it.name
-            tv_status_profile.text = it.status
-            tv_about_profile.text = it.about
-            tv_email_profile.text = it.email
-            tv_age_profile.text = it.age.toString()
+            tv_status_profile.text = "Status: " + it.status
+            tv_about_profile.text = "About: " + it.about
+            tv_email_profile.text = "E-mail " + it.email
+            tv_age_profile.text = it.age.toString() + " y.o"
             Glide.with(this).load(it.imageUrl).into(iv_profile)
         })
+    }
+
+    companion object {
+        const val PROFILE_FLAG = true
     }
 }

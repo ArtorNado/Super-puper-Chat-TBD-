@@ -6,6 +6,7 @@ import com.example.superpuperchattbd.common.base.BaseViewModel
 import com.example.superpuperchattbd.common.router.Router
 import com.example.superpuperchattbd.core_db.model.ProfileEntity
 import com.example.superpuperchattbd.profile.domain.ProfileInteractor
+import com.example.superpuperchattbd.profile_redaction.presentation.ProfileRedactionFragment
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 
@@ -17,7 +18,7 @@ class ProfileViewModel(
     var data: LiveData<ProfileEntity> = _data
 
     fun editProfile() {
-        router.editProfile()
+        if (ProfileRedactionFragment.PROFILE_REDACTION_FLAG) router.editProfile()
     }
 
     fun getUser(id: Int) {
