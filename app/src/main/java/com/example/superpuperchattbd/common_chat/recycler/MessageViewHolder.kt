@@ -11,7 +11,8 @@ import kotlinx.android.extensions.LayoutContainer
 import kotlinx.android.synthetic.main.message_template.view.*
 
 class MessageViewHolder private constructor(
-    override val containerView: View
+    override val containerView: View,
+    private val onClickImage: (Message) -> Unit
 ) : RecyclerView.ViewHolder(containerView), LayoutContainer {
 
     fun bind(message: Message) {
@@ -21,6 +22,7 @@ class MessageViewHolder private constructor(
                 minutes.let { if (it < FORMAT_TIME) "0$it" else "$it" }
             }
             tv_message.text = message.message
+            iv_ava.setOnClickListener { onClickImage.invoke(message) }
         }
     }
 
@@ -28,23 +30,30 @@ class MessageViewHolder private constructor(
 
         private const val FORMAT_TIME = 10
 
-        fun create(parent: ViewGroup, messageType: MessageType) =
-            when(messageType) {
+        fun create(
+            parent: ViewGroup,
+            onClickImage: (Message) -> Unit,
+            messageType: MessageType
+        ): MessageViewHolder {
+            return when (messageType) {
                 MessageType.Currant -> MessageViewHolder(
                     LayoutInflater.from(parent.context).inflate(
                         R.layout.message_template,
                         parent,
                         false
-                    )
+                    ),
+                    onClickImage
                 )
-                MessageType.Sender ->  MessageViewHolder(
+                MessageType.Sender -> MessageViewHolder(
                     LayoutInflater.from(parent.context).inflate(
                         R.layout.message_sender_template,
                         parent,
                         false
-                    )
+                    ),
+                    onClickImage
                 )
             }
+        }
     }
 
 }
