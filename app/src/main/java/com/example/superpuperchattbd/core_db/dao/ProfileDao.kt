@@ -13,7 +13,7 @@ import io.reactivex.Single
 @Dao
 interface ProfileDao {
 
-    @Query("SELECT * FROM ${Table.TABLE_PROFILE} WHERE id LIKE :userId")
+    @Query("SELECT * FROM ${Table.TABLE_PROFILE} WHERE id=:userId")
     fun getProfile(userId: Int): Single<ProfileEntity>
 
     @Query("SELECT * FROM ${Table.TABLE_PROFILE}")

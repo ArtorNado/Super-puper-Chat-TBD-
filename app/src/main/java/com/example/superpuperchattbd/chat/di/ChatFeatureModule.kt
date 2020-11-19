@@ -8,6 +8,7 @@ import com.example.superpuperchattbd.chat.data.repository.ChatRepositoryImpl
 import com.example.superpuperchattbd.chat.di.scope.ChatScope
 import com.example.superpuperchattbd.chat.domain.ChatInteractorImpl
 import com.example.superpuperchattbd.chat.presentation.ChatViewModel
+import com.example.superpuperchattbd.chat.router.ChatRouter
 import com.example.superpuperchattbd.common.di.viewModel.ViewModelKey
 import dagger.Module
 import dagger.Provides
@@ -20,8 +21,8 @@ class ChatFeatureModule {
     @Provides
     @IntoMap
     @ViewModelKey(ChatViewModel::class)
-    fun provideViewModel(interactor: ChatInteractorImpl): ViewModel {
-        return ChatViewModel(interactor)
+    fun provideViewModel(interactor: ChatInteractorImpl, router: ChatRouter): ViewModel {
+        return ChatViewModel(interactor, router)
     }
 
     @ChatScope

@@ -6,6 +6,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.paging.PagedList
 import androidx.paging.RxPagedListBuilder
 import com.example.superpuperchattbd.common.base.BaseViewModel
+import com.example.superpuperchattbd.common.featureflag.FeatureFlags
 import com.example.superpuperchattbd.common_messenger.Dialog
 import com.example.superpuperchattbd.common_messenger.domain.MessengerDataSourceInteractor
 import com.example.superpuperchattbd.messenger.router.MessengerRouter
@@ -45,6 +46,8 @@ class MessengerViewModel (
     }
 
     fun openChat(dialogId: Int) {
-        router.openChat(dialogId)
+        if (FeatureFlags.CHAT_FLAG) {
+            router.openChat(dialogId)
+        }
     }
 }

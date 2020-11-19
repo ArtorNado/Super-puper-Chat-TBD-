@@ -1,6 +1,5 @@
 package com.example.superpuperchattbd.chat.presentation
 
-import android.util.Log
 import android.view.MotionEvent
 import android.view.View
 import android.widget.TextView
@@ -48,7 +47,7 @@ class ChatFragment: BaseFragment<ChatViewModel>() {
         navView = activity?.findViewById(R.id.nav_view)
         navView?.visibility = View.GONE
 
-        adapter = MessageAdapter()
+        adapter = MessageAdapter { viewModel.navigateTo(it) }
         rv_messages.adapter = adapter
     }
 
@@ -57,7 +56,6 @@ class ChatFragment: BaseFragment<ChatViewModel>() {
             arguments?.getInt(MessengerFragment.DIALOG_ID) ?: 0
         )
         observe(viewModel.data, Observer {
-            Log.e("title", it.senderName ?: "null")
             activity?.title = it.senderName
             adapter?.submitList(it.messages)
             if (it.messages.isNotEmpty()) {
@@ -75,6 +73,6 @@ class ChatFragment: BaseFragment<ChatViewModel>() {
 
     companion object {
         private const val DRAWABLE_RIGHT_KEY = 2
-        const val FEATURE_FLAG = true
+        const val PROFILE_ID = "profile_id"
     }
 }

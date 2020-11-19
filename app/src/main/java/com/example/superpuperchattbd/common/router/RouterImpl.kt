@@ -13,10 +13,8 @@ class RouterImpl @Inject constructor(
 ) : Router {
 
     override fun openChat(dialogId: Int) {
-        if (ChatFragment.FEATURE_FLAG) {
-            val args = bundleOf(MessengerFragment.DIALOG_ID to dialogId)
-            navigateTo(R.id.action_global_chatFragment, args)
-        }
+        val args = bundleOf(MessengerFragment.DIALOG_ID to dialogId)
+        navigateTo(R.id.action_global_chatFragment, args)
     }
 
     override fun backToProfile() {
@@ -25,6 +23,11 @@ class RouterImpl @Inject constructor(
     override fun editProfile() {
         Log.d("gogogo", "gogogog")
         navigateTo(R.id.action_navigation_profile_to_profileRedactionFragment)
+    }
+
+    override fun openProfile(id: Int) {
+        val args = bundleOf(ChatFragment.PROFILE_ID to id)
+        navigateTo(R.id.action_chat_to_profile, args)
     }
 
     private fun navigateTo(actionId: Int, bundle: Bundle? = null) {

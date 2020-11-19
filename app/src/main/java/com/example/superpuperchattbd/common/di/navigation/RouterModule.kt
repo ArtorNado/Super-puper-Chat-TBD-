@@ -1,6 +1,7 @@
 package com.example.superpuperchattbd.common.di.navigation
 
 import com.example.superpuperchattbd.app.di.scope.ApplicationScope
+import com.example.superpuperchattbd.chat.router.ChatRouter
 import com.example.superpuperchattbd.common.router.Router
 import com.example.superpuperchattbd.common.router.RouterImpl
 import com.example.superpuperchattbd.messenger.router.MessengerRouter
@@ -23,4 +24,8 @@ abstract class RouterModule {
     @ApplicationScope
     @Binds
     abstract fun bindWholeRouter(router: RouterImpl): Router
+
+    @ApplicationScope
+    @Binds
+    abstract fun bindChatRouter(router: RouterImpl): ChatRouter
 }

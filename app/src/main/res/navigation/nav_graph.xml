@@ -76,4 +76,11 @@
         app:launchSingleTop="false"
         app:popUpToInclusive="true"/>
 
+    <action
+        android:id="@+id/action_chat_to_profile"
+        app:destination="@id/navigation_profile"
+        app:launchSingleTop="false"
+        app:popUpTo="@id/chatFragment"
+        app:popUpToInclusive="false" />
+
 </navigation>

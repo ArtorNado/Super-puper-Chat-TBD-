@@ -21,9 +21,9 @@ class ProfileViewModel(
         if (ProfileRedactionFragment.PROFILE_REDACTION_FLAG) router.editProfile()
     }
 
-    init {
+    fun getUser(id: Int) {
         disposables.add(
-            interactor.getData(0).observeOn(AndroidSchedulers.mainThread()).subscribeOn(Schedulers.io()).subscribe({
+            interactor.getData(id).observeOn(AndroidSchedulers.mainThread()).subscribeOn(Schedulers.io()).subscribe({
                 _data.value = it
             }, {
                 it.printStackTrace()
