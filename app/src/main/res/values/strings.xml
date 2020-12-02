@@ -28,5 +28,6 @@
     <string name="tv_wtite_email_text">Write new email</string>
     <string name="edit_profile">Редактировать профиль</string>
     <string name="tv_error_text">You should edit all fields</string>
+    <string name="Magic">Magic</string>
 
 </resources>
