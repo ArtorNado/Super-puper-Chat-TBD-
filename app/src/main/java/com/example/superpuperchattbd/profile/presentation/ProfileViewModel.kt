@@ -30,4 +30,8 @@ class ProfileViewModel(
             })
         )
     }
+
+    fun refresh(userId: Int) {
+        getUser(userId)
+    }
 }

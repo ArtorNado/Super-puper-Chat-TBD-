@@ -1,6 +1,6 @@
 package com.example.superpuperchattbd.profile_redaction.presentation
 
-import android.os.Bundle
+import android.util.Log
 import android.view.View
 import androidx.lifecycle.Observer
 import com.example.superpuperchattbd.R
@@ -13,14 +13,8 @@ class ProfileRedactionFragment : BaseFragment<ProfileRedactionViewModel>() {
 
     override val layoutId: Int = R.layout.fragment_profile_redaction
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        setupViews()
-    }
-
     override fun onResume() {
         super.onResume()
-        subscribe()
         viewModel.getUserData()
     }
 
@@ -60,6 +54,7 @@ class ProfileRedactionFragment : BaseFragment<ProfileRedactionViewModel>() {
 
     override fun subscribe() {
         viewModel.data.observe(viewLifecycleOwner, Observer { userData ->
+            Log.e("Update", userData.name)
             etName.setText(userData.name)
             etAge.setText(userData.age.toString())
             etStatus.setText(userData.status)
@@ -69,6 +64,8 @@ class ProfileRedactionFragment : BaseFragment<ProfileRedactionViewModel>() {
         viewModel.navigateToProfile.observe(viewLifecycleOwner, Observer { success ->
             if (success) {
                 viewModel.navigateToProfile()
+            } else {
+                tvError.visibility = View.VISIBLE
             }
         })
     }
@@ -79,6 +76,6 @@ class ProfileRedactionFragment : BaseFragment<ProfileRedactionViewModel>() {
     }
 
     companion object {
-        const val PROFILE_REDACTION_FLAG = true
+        const val PROFILE_REDACTION_FLAG = false
     }
 }

@@ -8,6 +8,7 @@ import com.example.superpuperchattbd.R
 import com.example.superpuperchattbd.app.injector.Injector
 import com.example.superpuperchattbd.chat.presentation.ChatFragment
 import com.example.superpuperchattbd.common.base.BaseFragment
+import com.example.superpuperchattbd.profile_redaction.presentation.ProfileRedactionFragment
 import kotlinx.android.synthetic.main.fragment_profile.*
 
 class ProfileFragment : BaseFragment<ProfileViewModel>() {
@@ -30,11 +31,13 @@ class ProfileFragment : BaseFragment<ProfileViewModel>() {
     override fun setupViews() {
         userId = arguments?.getInt(ChatFragment.PROFILE_ID) ?: 0
         btn_edit_profile.visibility = if (userId == 0) View.VISIBLE else View.INVISIBLE
+        if(!ProfileRedactionFragment.PROFILE_REDACTION_FLAG) btn_edit_profile.visibility = View.INVISIBLE
     }
 
     override fun subscribe() {
-        viewModel.getUser(userId)
+        //viewModel.getUser(userId)
         viewModel.data.observe(viewLifecycleOwner, Observer {
+            Log.e("Updaaate", it.name)
             tv_name_profile.text = it.name
             tv_status_profile.text = "Status: " + it.status
             tv_about_profile.text = "About: " + it.about
@@ -42,6 +45,11 @@ class ProfileFragment : BaseFragment<ProfileViewModel>() {
             tv_age_profile.text = it.age.toString() + " y.o"
             Glide.with(this).load(it.imageUrl).into(iv_profile)
         })
+    }
+
+    override fun onResume() {
+        super.onResume()
+        viewModel.refresh(userId)
     }
 
     companion object {
