@@ -14,6 +14,7 @@ import android.view.animation.AccelerateInterpolator
 import android.view.animation.LinearInterpolator
 import android.widget.FrameLayout
 import android.widget.ImageView
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.appcompat.widget.AppCompatImageView
 import com.example.superpuperchattbd.R
@@ -24,7 +25,9 @@ class ThemeFragment : BaseFragment<ThemeViewModel>(){
 
     override val layoutId: Int = com.example.superpuperchattbd.R.layout.theme_fragment
     lateinit var star: ImageView
+    lateinit var button: TextView
     private val KEY_THEME = "Theme"
+    private val flag = false
 
     override fun onCreateView(
             inflater: LayoutInflater, container: ViewGroup?,
@@ -32,8 +35,14 @@ class ThemeFragment : BaseFragment<ThemeViewModel>(){
     ): View? {
         val view = inflater.inflate(R.layout.theme_fragment, container, false)
         star = view.findViewById(R.id.star)
+        button = view.findViewById(R.id.btn_theme)
         val themeSharedPreferences = this.activity?.getPreferences(Context.MODE_PRIVATE)
         themeSharedPreferences?.getInt(KEY_THEME, 1)?.let { AppCompatDelegate.setDefaultNightMode(it) }
+        if (flag){
+            button.setText(getString(R.string.change_theme))
+        } else {
+            button.setText(getString(R.string.Magic))
+        }
         return view
     }
 
@@ -48,18 +57,19 @@ class ThemeFragment : BaseFragment<ThemeViewModel>(){
             for(i in 1..15){
                 shower()
             }
-            Handler().postDelayed({
+            if (flag){
+                Handler().postDelayed({
 
+                    if (AppCompatDelegate.getDefaultNightMode() == AppCompatDelegate.MODE_NIGHT_YES) {
+                        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+                        themeSharedPreferences?.edit()?.putInt(KEY_THEME, AppCompatDelegate.MODE_NIGHT_NO)?.apply()
 
-            if (AppCompatDelegate.getDefaultNightMode() == AppCompatDelegate.MODE_NIGHT_YES) {
-                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
-                themeSharedPreferences?.edit()?.putInt(KEY_THEME, AppCompatDelegate.MODE_NIGHT_NO)?.apply()
-
-            } else {
-                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
-                themeSharedPreferences?.edit()?.putInt(KEY_THEME, AppCompatDelegate.MODE_NIGHT_YES)?.apply()
+                    } else {
+                        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+                        themeSharedPreferences?.edit()?.putInt(KEY_THEME, AppCompatDelegate.MODE_NIGHT_YES)?.apply()
+                    }
+                }, 2000)
             }
-            }, 2000)
 
         }
     }
