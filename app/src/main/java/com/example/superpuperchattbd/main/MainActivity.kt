@@ -1,12 +1,13 @@
 package com.example.superpuperchattbd.main
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
 import androidx.navigation.ui.NavigationUI
 import com.example.superpuperchattbd.R
 import com.example.superpuperchattbd.app.injector.Injector
 import com.example.superpuperchattbd.common.router.NavControllerProvider
+import com.example.superpuperchattbd.profile.presentation.ProfileFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import javax.inject.Inject
 
@@ -35,6 +36,9 @@ class MainActivity : AppCompatActivity() {
         val navView: BottomNavigationView = findViewById(R.id.nav_view)
         val navController = findNavController(R.id.nav_host_fragment)
         NavigationUI.setupWithNavController(navView, navController)
+        if (!ProfileFragment.PROFILE_FLAG) {
+            navView.menu.getItem(2).isVisible = false
+        }
     }
 
     override fun onStop() {

@@ -44,9 +44,12 @@ class ProfileRedactionViewModel(
             interactor.saveUserData(profileEntity)
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeOn(Schedulers.io())
+                .doOnComplete {
+                    _navigateToProfile.value = true
+                }
                 .subscribe(
                     {
-                        _navigateToProfile.value = true
+
                     }, {
                         it.printStackTrace()
                     }
