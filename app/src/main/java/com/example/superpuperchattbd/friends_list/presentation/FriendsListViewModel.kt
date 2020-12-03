@@ -34,17 +34,25 @@ class FriendsListViewModel(
     }
 
     fun friendChosen(friend: ProfileEntity) {
-        interactor.createNewDialog(
-            DialogEntity(
-                0,
-                friend.id,
-                friend.name,
-                friend.imageUrl,
-                emptyList()
+        disposables.add(
+            interactor.createNewDialog(
+                DialogEntity(
+                    0,
+                    friend.id,
+                    friend.name,
+                    friend.imageUrl,
+                    emptyList()
+                )
             )
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeOn(Schedulers.io())
+                .subscribe {
+                    interactor.getDialogBySenderId(friend.id)
+                        .observeOn(AndroidSchedulers.mainThread())
+                        .subscribeOn(Schedulers.io())
+                        .subscribe({ data -> router.openChat(data.id) }, {})
+                }
         )
-        val dialog = interactor.getDialogBySenderId(friend.id)
 
-        router.openChat(dialog.id)
     }
 }

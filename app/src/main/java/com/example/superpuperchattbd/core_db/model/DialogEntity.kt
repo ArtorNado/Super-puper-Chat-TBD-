@@ -14,7 +14,7 @@ import com.example.superpuperchattbd.core_db.type_converters.MessageConverter
 )
 @TypeConverters(MessageConverter::class)
 data class DialogEntity(
-    @PrimaryKey
+    @PrimaryKey(autoGenerate = true)
     val id: Int,
     @ColumnInfo(name = "sender_id", index = true)
     val senderId: Int,

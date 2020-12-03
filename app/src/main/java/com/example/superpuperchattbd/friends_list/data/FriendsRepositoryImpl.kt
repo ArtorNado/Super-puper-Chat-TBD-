@@ -5,6 +5,7 @@ import com.example.superpuperchattbd.core_db.AppDatabase
 import com.example.superpuperchattbd.core_db.model.DialogEntity
 import com.example.superpuperchattbd.core_db.model.ProfileEntity
 import io.reactivex.Completable
+import io.reactivex.Single
 import javax.inject.Inject
 
 class FriendsRepositoryImpl @Inject constructor(private val db: AppDatabase) : FriendsRepository {
@@ -12,8 +13,8 @@ class FriendsRepositoryImpl @Inject constructor(private val db: AppDatabase) : F
         db.profileDao().getAllProfiles()
 
     override fun createNewDialog(dialogEntity: DialogEntity): Completable =
-        db.dialogDao().setDialog(dialogEntity)
+        db.dialogDao().createDialog(dialogEntity)
 
-    override fun getDialogBySenderId(id: Int): DialogEntity =
+    override fun getDialogBySenderId(id: Int): Single<DialogEntity> =
         db.dialogDao().getDialogBySenderId(id)
 }
